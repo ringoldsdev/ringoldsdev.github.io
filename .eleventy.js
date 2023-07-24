@@ -3,7 +3,6 @@ const { DateTime } = require("luxon");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const htmlmin = require("html-minifier");
 const esbuild = require("esbuild");
-const mdxPlugin = require("@jamshop/eleventy-plugin-mdx");
 
 module.exports = function (eleventyConfig) {
   // Disable automatic use of your .gitignore
@@ -80,8 +79,6 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addWatchTarget("./src/static/js/");
-
-  eleventyConfig.addPlugin(mdxPlugin);
 
   // Let Eleventy transform HTML files as nunjucks
   // So that we can use .html instead of .njk

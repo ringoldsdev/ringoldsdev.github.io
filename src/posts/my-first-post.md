@@ -11,7 +11,7 @@ tags:
   - right
 ---
 
-<h1>Hello world!</h1>
+# Hello world!
 
 ## This is a Heading h2
 

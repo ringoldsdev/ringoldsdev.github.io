@@ -6,7 +6,6 @@ const esbuild = require('esbuild');
 const {
   fortawesomeBrandsPlugin
 } = require('@vidhill/fortawesome-brands-11ty-shortcode');
-const cacheBuster = require('@mightyplow/eleventy-plugin-cache-buster');
 
 module.exports = function (eleventyConfig) {
   // Disable automatic use of your .gitignore
@@ -65,8 +64,14 @@ module.exports = function (eleventyConfig) {
     return content;
   });
 
+  eleventyConfig.addFilter('bust', (url) => {
+    const [urlPart, paramPart] = url.split('?');
+    const params = new URLSearchParams(paramPart || '');
+    params.set('v', DateTime.local().toFormat('X'));
+    return `${urlPart}?${params}`;
+  });
+
   eleventyConfig.addPlugin(fortawesomeBrandsPlugin);
-  eleventyConfig.addPlugin(cacheBuster({}));
 
   eleventyConfig.on('beforeBuild', async () => {
     await esbuild.build({

@@ -8,12 +8,16 @@
     {% if description %}
     <meta name="description" content="{{description}}" />
     {% endif %} {% block head %}{% endblock %}
-    <link rel="stylesheet" type="text/css" href="/static/css/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ '/static/css/style.css' | url | bust }}"
+    />
     {% if prism == true %}
     <link
       rel="stylesheet"
       type="text/css"
-      href="/static/css/prism-tomorrow.css"
+      href="{{ '/static/css/prism-tomorrow.css' | url | bust }}"
     />
     {% endif %}
   </head>
@@ -21,6 +25,6 @@
     {% include "./partials/contact.html" %} {{ content | safe }} {% include
     "./partials/footer.html" %}
     <script src="/static/js/alpine.js"></script>
-    <script src="/static/js/index.min.js"></script>
+    <script src="{{ '/static/js/index.min.js' | url | bust }}"></script>
   </body>
 </html>

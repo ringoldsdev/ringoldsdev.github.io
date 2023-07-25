@@ -1,8 +1,11 @@
-const yaml = require("js-yaml");
-const { DateTime } = require("luxon");
-const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
-const htmlmin = require("html-minifier");
-const esbuild = require("esbuild");
+const yaml = require('js-yaml');
+const { DateTime } = require('luxon');
+const syntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
+const htmlmin = require('html-minifier');
+const esbuild = require('esbuild');
+const {
+  fortawesomeBrandsPlugin
+} = require('@vidhill/fortawesome-brands-11ty-shortcode');
 
 module.exports = function (eleventyConfig) {
   // Disable automatic use of your .gitignore
@@ -12,10 +15,18 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
 
   // human readable date
-  eleventyConfig.addFilter("readableDate", (dateObj) => {
-    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat(
-      "dd LLL yyyy"
+  eleventyConfig.addFilter('readableDate', (dateObj) => {
+    return DateTime.fromJSDate(dateObj, { zone: 'utc' }).toFormat(
+      'dd LLL yyyy'
     );
+  });
+
+  eleventyConfig.addFilter('headline', (headline) => {
+    const [last, ...rest] = headline
+      .split(' ')
+      .filter((word) => word.length > 0)
+      .reverse();
+    return `${rest.reverse().join(' ')}&nbsp;${last}`;
   });
 
   // Syntax Highlighting for Code blocks
@@ -23,29 +34,29 @@ module.exports = function (eleventyConfig) {
 
   // To Support .yaml Extension in _data
   // You may remove this if you can use JSON
-  eleventyConfig.addDataExtension("yaml", (contents) => yaml.load(contents));
+  eleventyConfig.addDataExtension('yaml', (contents) => yaml.load(contents));
 
   // Copy Static Files to /_Site
   eleventyConfig.addPassthroughCopy({
-    "./node_modules/alpinejs/dist/cdn.min.js": "./static/js/alpine.js",
-    "./node_modules/prismjs/themes/prism-tomorrow.css":
-      "./static/css/prism-tomorrow.css",
+    './node_modules/alpinejs/dist/cdn.min.js': './static/js/alpine.js',
+    './node_modules/prismjs/themes/prism-tomorrow.css':
+      './static/css/prism-tomorrow.css'
   });
 
   // Copy Image Folder to /_site
-  eleventyConfig.addPassthroughCopy("./src/static/img");
+  eleventyConfig.addPassthroughCopy('./src/static/img');
 
   // Copy favicon to route of /_site
-  eleventyConfig.addPassthroughCopy("./src/favicon.ico");
+  eleventyConfig.addPassthroughCopy('./src/favicon.ico');
 
   // Minify HTML
   eleventyConfig.addTransform('htmlmin', function (content, outputPath) {
     // Eleventy 1.0+: use this.inputPath and this.outputPath instead
-    if (outputPath.endsWith(".html")) {
+    if (outputPath.endsWith('.html')) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
-        collapseWhitespace: true,
+        collapseWhitespace: true
       });
       return minified;
     }
@@ -53,8 +64,10 @@ module.exports = function (eleventyConfig) {
     return content;
   });
 
+  eleventyConfig.addPlugin(fortawesomeBrandsPlugin);
+
   // eleventyConfig.addTransform("esbuild", async function (content, outputPath) {
-    
+
   //   if (outputPath.endsWith(".js")) {
   //     const result = await esbuild.transform(content, {
   //       loader: "js",
@@ -66,26 +79,26 @@ module.exports = function (eleventyConfig) {
   //   return content;
   // });
 
-  eleventyConfig.on("beforeBuild", async () => {
+  eleventyConfig.on('beforeBuild', async () => {
     await esbuild.build({
-      entryPoints: ["src/static/js/index.ts"],
+      entryPoints: ['src/static/js/index.ts'],
       bundle: true,
       minify: true,
       sourcemap: true,
       // outdir: "_site/static/js",
-      outfile: "_site/static/js/index.min.js",
-      target: ["es2015"],
+      outfile: '_site/static/js/index.min.js',
+      target: ['es2015']
     });
   });
 
-  eleventyConfig.addWatchTarget("./src/static/js/");
+  eleventyConfig.addWatchTarget('./src/static/js/');
 
   // Let Eleventy transform HTML files as nunjucks
   // So that we can use .html instead of .njk
   return {
     dir: {
-      input: "src",
+      input: 'src'
     },
-    htmlTemplateEngine: "njk",
+    htmlTemplateEngine: 'njk'
   };
 };

@@ -1,20 +1,11 @@
 ---
-import "../styles/global.css";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1 class="text-3xl font-bold underline">Hello world!</h1>
-		<div x-data="{ count: 0 }" class="p-4 border rounded">
-		  <button @click="count++" class="px-4 py-2 bg-blue-500 text-white rounded">Increment</button>
-		  <p class="mt-2">Count: <span x-text="count"></span></p>
-		</div>
-	</body>
-</html>
+<BaseLayout title="Astro">
+  <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  <div x-data="{ count: 0 }" class="p-4 border rounded">
+    <button @click="count++" class="px-4 py-2 bg-blue-500 text-white rounded">Increment</button>
+    <p class="mt-2">Count: <span x-text="count"></span></p>
+  </div>
+</BaseLayout>

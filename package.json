@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "ringolds.dev",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -12,6 +12,7 @@
   "dependencies": {
     "@alpinejs/intersect": "^3.14.9",
     "@astrojs/alpinejs": "^0.4.8",
+    "@astrojs/mdx": "^4.2.6",
     "alpinejs": "^3.14.9",
     "astro": "^5.7.12",
     "tailwindcss": "^4.1.5"

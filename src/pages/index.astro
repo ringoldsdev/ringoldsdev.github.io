@@ -12,5 +12,9 @@ import "../styles/global.css";
 	</head>
 	<body>
 		<h1 class="text-3xl font-bold underline">Hello world!</h1>
+		<div x-data="{ count: 0 }" class="p-4 border rounded">
+		  <button @click="count++" class="px-4 py-2 bg-blue-500 text-white rounded">Increment</button>
+		  <p class="mt-2">Count: <span x-text="count"></span></p>
+		</div>
 	</body>
 </html>

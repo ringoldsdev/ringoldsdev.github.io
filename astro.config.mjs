@@ -8,9 +8,10 @@ import partytown from "@astrojs/partytown";
 
 import sitemap from "@astrojs/sitemap";
 
-import remarkToc from "remark-toc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
+
+import sectionize from "@hbsnow/rehype-sectionize";
 
 // https://astro.build/config
 export default defineConfig({
@@ -26,9 +27,9 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 	},
 	markdown: {
-		remarkPlugins: [[remarkToc, { heading: "contents" }]],
 		rehypePlugins: [
 			rehypeHeadingIds,
+			sectionize,
 			[rehypeAutolinkHeadings, { behavior: "wrap" }],
 		],
 	},

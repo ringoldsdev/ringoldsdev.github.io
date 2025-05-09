@@ -11,15 +11,40 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 
 ---
 
+<!-- https://kld.dev/building-table-of-contents/ -->
+ <!-- headings -->
+
 <BaseLayout title={post.data.title}>
   <div class="px-4 py-8">
-    <h1 class="text-5xl font-bold text-gray-800 mb-4">{post.data.title}</h1>
-    <p class="text-gray-500 text-sm mb-8">{post.data.pubDate.toDateString()}</p>
-    <article class="prose dark:prose-invert prose-headings:font-bold prose-headings:prose-a:font-bold prose-headings:prose-a:no-underline  prose-p:text-justify prose-img:rounded-xl ">
+    <div class=" text-center ">
+      <h1 class="text-5xl text-center font-bold text-gray-800 mb-4">{post.data.title}</h1>
+    
+      {post.data?.pubDate && (
+        <p class="text-gray-500 text-sm mb-8">{post.data.pubDate.toDateString()}</p>
+      )}
+    </div>
+
+
+    <article class="prose dark:prose-invert prose-a:font-normal prose-headings:font-bold prose-headings:prose-a:font-bold prose-headings:prose-a:no-underline prose-img:rounded-xl ">
+
+      <p class="font-semibold mb-8">
+        {post.data.description}
+      </p>   
+
+      <h2>Table of contents</h2>
+      <ul class="mb-12">
+        {headings.map((heading) => (
+          <li>
+            <a href={`#${heading.slug}`} class={heading.depth === 1 ? 'font-bold' : ''}>
+              {heading.text}
+            </a>
+          </li>
+        ))}
+      </ul>
       <Content />
     </article>
   </div>

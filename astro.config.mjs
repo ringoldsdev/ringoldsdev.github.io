@@ -8,9 +8,14 @@ import partytown from "@astrojs/partytown";
 
 import sitemap from "@astrojs/sitemap";
 
+import remarkToc from "remark-toc";
+import rehypeSlug from "rehype-slug";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+
 // https://astro.build/config
 export default defineConfig({
 	site: "https://ringoldsdev.github.io/",
+	prefetch: true,
 	integrations: [
 		alpinejs({ entrypoint: "/src/entrypoint.ts" }),
 		mdx(),
@@ -19,5 +24,12 @@ export default defineConfig({
 	],
 	vite: {
 		plugins: [tailwindcss()],
+	},
+	markdown: {
+		remarkPlugins: [[remarkToc, { heading: "contents" }]],
+		rehypePlugins: [
+			rehypeSlug,
+			[rehypeAutolinkHeadings, { behavior: "append" }],
+		],
 	},
 });

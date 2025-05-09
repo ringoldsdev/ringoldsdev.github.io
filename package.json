@@ -1,30 +1,33 @@
 {
-  "name": "ringolds.dev",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro",
-    "format": "prettier --write ."
-  },
-  "dependencies": {
-    "@alpinejs/intersect": "^3.14.9",
-    "@astrojs/alpinejs": "^0.4.8",
-    "@astrojs/mdx": "^4.2.6",
-    "@astrojs/partytown": "^2.1.4",
-    "@astrojs/rss": "^4.0.11",
-    "@astrojs/sitemap": "^3.3.1",
-    "alpinejs": "^3.14.9",
-    "astro": "^5.7.12",
-    "tailwindcss": "^4.1.5"
-  },
-  "devDependencies": {
-    "@tailwindcss/vite": "^4.1.5",
-    "@types/alpinejs": "^3.13.11",
-    "@types/alpinejs__intersect": "^3.13.4",
-    "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.11"
-  }
+	"name": "ringolds.dev",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"format": "prettier --write ."
+	},
+	"dependencies": {
+		"@alpinejs/intersect": "^3.14.9",
+		"@astrojs/alpinejs": "^0.4.8",
+		"@astrojs/mdx": "^4.2.6",
+		"@astrojs/partytown": "^2.1.4",
+		"@astrojs/rss": "^4.0.11",
+		"@astrojs/sitemap": "^3.3.1",
+		"alpinejs": "^3.14.9",
+		"astro": "^5.7.12",
+		"rehype-autolink-headings": "^7.1.0",
+		"rehype-slug": "^6.0.0",
+		"remark-toc": "^9.0.0",
+		"tailwindcss": "^4.1.5"
+	},
+	"devDependencies": {
+		"@tailwindcss/vite": "^4.1.5",
+		"@types/alpinejs": "^3.13.11",
+		"@types/alpinejs__intersect": "^3.13.4",
+		"prettier": "^3.5.3",
+		"prettier-plugin-tailwindcss": "^0.6.11"
+	}
 }

@@ -30,7 +30,8 @@ export default defineConfig({
 		rehypePlugins: [
 			rehypeHeadingIds,
 			sectionize,
-			[rehypeAutolinkHeadings, { behavior: "wrap" }],
+			rehypeAutolinkHeadings,
+			// [rehypeAutolinkHeadings, { behavior: "wrap" }],
 		],
 	},
 });

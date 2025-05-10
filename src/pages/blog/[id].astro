@@ -15,13 +15,12 @@ const { Content, headings } = await render(post);
 
 ---
 
-<!-- https://kld.dev/building-table-of-contents/ -->
- <!-- headings -->
+<!-- https://medium.com/@rezahedi/how-to-build-table-of-contents-in-astro-and-sectionize-the-markdown-content-78bee84e6a7f -->
 
 <BaseLayout title={post.data.title}>
   <div class="px-4 py-8">
     <div class=" text-center ">
-      <h1 class="text-5xl text-center font-bold text-gray-800 mb-4">{post.data.title}</h1>
+      <h1 class="text-5xl text-center font-bold text-gray-800 mb-4 font-display">{post.data.title}</h1>
     
       {post.data?.pubDate && (
         <p class="text-gray-500 text-sm mb-8">{post.data.pubDate.toDateString()}</p>
@@ -29,22 +28,12 @@ const { Content, headings } = await render(post);
     </div>
 
 
-    <article class="prose dark:prose-invert prose-a:font-normal prose-headings:font-bold prose-headings:prose-a:font-bold prose-headings:prose-a:no-underline prose-img:rounded-xl ">
+    <article class="prose prose-base prose-headings:font-display prose-headings:font-semibold dark:prose-headings:text-white dark:prose-blockquote:border-base-500 prose-blockquote:font-normal prose-blockquote:tracking-normal prose-img:border prose-img:border-base-200 dark:prose-img:border-base-700 dark:prose-code:text-white prose-a:text-accent-400 hover:prose-a:text-accent-500 dark:prose-hr:border-base-800 prose-hr:border-base-300 prose-pre:border-none prose-pre:rounded-none prose-strong:font-medium prose-a:duration-200 dark:prose-strong:text-white">
 
-      <p class="font-semibold mb-8">
+      <p class="mb-8">
         {post.data.description}
       </p>   
 
-      <h2>Table of contents</h2>
-      <ul class="mb-12">
-        {headings.map((heading) => (
-          <li>
-            <a href={`#${heading.slug}`} class={heading.depth === 1 ? 'font-bold' : ''}>
-              {heading.text}
-            </a>
-          </li>
-        ))}
-      </ul>
       <Content />
     </article>
   </div>

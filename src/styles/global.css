@@ -11,6 +11,13 @@
 
 @font-face {
 	font-family: "Raleway";
+	src: url("/fonts/Raleway-SemiBold.ttf") format("truetype");
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Raleway";
 	src: url("/fonts/Raleway-Bold.ttf") format("truetype");
 	font-weight: bold;
 	font-style: normal;
@@ -25,17 +32,83 @@
 
 @font-face {
 	font-family: "Raleway";
+	src: url("/fonts/Raleway-SemiBoldItalic.ttf") format("truetype");
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "Raleway";
 	src: url("/fonts/Raleway-BoldItalic.ttf") format("truetype");
 	font-weight: bold;
 	font-style: italic;
 }
 
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/Inter_18pt-Light.ttf") format("truetype");
+	font-weight: 300;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/Inter_18pt-Regular.ttf") format("truetype");
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/Inter_18pt-SemiBold.ttf") format("truetype");
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/Inter_18pt-Bold.ttf") format("truetype");
+	font-weight: bold;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/Inter_18pt-LightItalic.ttf") format("truetype");
+	font-weight: 300;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/Inter_18pt-Italic.ttf") format("truetype");
+	font-weight: normal;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/Inter_18pt-SemiBoldItalic.ttf") format("truetype");
+	font-weight: 500;
+	font-style: italic;
+}
+
+@font-face {
+	font-family: "Inter";
+	src: url("/fonts/Inter_18pt-BoldItalic.ttf") format("truetype");
+	font-weight: bold;
+	font-style: italic;
+}
+
 /* Set Raleway as the default heading font */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-family: "Raleway", sans-serif;
+@theme {
+	--font-sans: "Inter", "sans-serif";
+	--font-display: "Raleway", "sans-serif";
+}
+
+/* Override Tailwind Typography defaults to make prose text less bold */
+.prose {
+	--tw-prose-headings-font-weight: 500; /* Adjust heading font weight */
+	--tw-prose-bold-font-weight: 600; /* Adjust bold text font weight */
+	--tw-prose-strong-font-weight: 600; /* Adjust strong text font weight */
 }

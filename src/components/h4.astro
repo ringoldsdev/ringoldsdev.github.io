@@ -1,0 +1,13 @@
+---
+import slugify from 'slugify';
+
+const id = await Astro.slots.render("default").then((content) => {
+  return slugify(content, { lower: true });
+});
+
+---
+
+<h4 id={id}>
+  <slot />
+  <a href=`#${id}`>@</a>
+</h4>

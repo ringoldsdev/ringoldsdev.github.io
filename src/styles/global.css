@@ -25,6 +25,13 @@
 
 @font-face {
 	font-family: "Raleway";
+	src: url("/fonts/Raleway-Black.ttf") format("truetype");
+	font-weight: 900;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Raleway";
 	src: url("/fonts/Raleway-Italic.ttf") format("truetype");
 	font-weight: normal;
 	font-style: italic;
@@ -111,4 +118,10 @@
 	--tw-prose-headings-font-weight: 500; /* Adjust heading font weight */
 	--tw-prose-bold-font-weight: 600; /* Adjust bold text font weight */
 	--tw-prose-strong-font-weight: 600; /* Adjust strong text font weight */
+}
+
+@layer base {
+	:root {
+		--breakpoint-md: 52rem;
+	}
 }

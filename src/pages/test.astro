@@ -24,21 +24,29 @@ import "../styles/global.css";
         .text-darker-gray {
             color: hsl(0, 0%, 7%); /* Darker text color */
         }
-        .rotate-45 {
-            transform: rotate(45deg);
+        .no-scroll {
+            overflow: hidden;
         }
         [x-cloak] {
             display: none !important;
         }
     </style>
 </head>
-<body x-data="{ scrollPosition: 0 }" @scroll.window="scrollPosition = window.scrollY" class="bg-white">
-    <!-- Black background section -->
-    <div class="absolute top-0 left-0 w-full h-[70vh] bg-black z-behind-2"></div>
-    
-    <div class="relative" x-data="{ mobileMenuOpen: false }">
+<body x-data="{ scrollPosition: 0, mobileMenuOpen: false }" @scroll.window="scrollPosition = window.scrollY" class="bg-white" :class="{ 'no-scroll': mobileMenuOpen }">
+    <!-- Black background section with relative positioning -->
+    <div class="relative bg-black w-full pb-40 overflow-hidden">
+        <!-- Text overlay as background texture with parallax effect -->
+        <div class="absolute inset-0 w-full h-full overflow-hidden">
+            <div 
+                class="text-darker-gray text-[25vw] font-black font-display leading-[0.9] text-center uppercase absolute top-1/2 left-1/2 w-[150%]"
+                x-bind:style="'transform: translate(-50%, -50%) rotate(45deg) translateY(' + scrollPosition * 0.6 + 'px)'"
+            >
+                Some blog entry headline thats quite long
+            </div>
+        </div>
+
         <!-- Navigation Bar with transparent background -->
-        <div class="flex justify-center text-white px-8 sm:px-20" id="navigation">
+        <div class="relative z-10 flex justify-center text-white px-8 sm:px-20">
             <nav class="flex justify-between items-center py-6 w-full max-w-screen-md">
                 <div class="text-2xl font-bold">LOGO</div>
                 
@@ -60,95 +68,85 @@ import "../styles/global.css";
                 </button>
             </nav>
         </div>
-        
-        <!-- Text overlay as background texture with parallax effect and 45-degree rotation -->
-        <div class="absolute top-0 left-0 w-full h-[70vh] flex justify-center items-center overflow-hidden z-behind-1" style="will-change: transform;">
-            <div 
-                class="text-darker-gray font-display text-[33vw] sm:text-[25vw] font-black leading-[0.9] text-center uppercase w-[150%] origin-center rotate-45"
-                x-bind:style="'transform: translateY(' + scrollPosition * 0.6 + 'px)'"
-            >
-                Some blog entry headline thats quite long
-            </div>
-        </div>
-
-        <!-- Mobile Menu (Full Screen) - No transitions -->
-        <div 
-            x-cloak
-            x-show="mobileMenuOpen" 
-            class="fixed inset-0 bg-black z-50"
-        >
-            <div class="px-8 sm:px-20 max-w-screen-md mx-auto">
-                <!-- Mobile Menu Header with Close Button -->
-                <div class="flex justify-between items-center py-6">
-                    <div class="text-2xl font-bold text-white">LOGO</div>
-                    <!-- Close Button in same position as hamburger -->
-                    <button 
-                        class="text-white focus:outline-none"
-                        @click="mobileMenuOpen = false"
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            
-            <!-- Mobile Menu Links -->
-            <div class="flex flex-col items-center justify-center h-[80vh] space-y-8 text-xl">
-                <a href="#" class="text-white hover:text-gray-300" @click="mobileMenuOpen = false">Link 1</a>
-                <a href="#" class="text-white hover:text-gray-300" @click="mobileMenuOpen = false">Link 2</a>
-                <a href="#" class="text-white hover:text-gray-300" @click="mobileMenuOpen = false">Link 3</a>
-            </div>
-        </div>
 
         <!-- Headline with same padding as content -->
-        <div class="text-center text-white max-w-screen-md mx-auto px-8 sm:px-20">
-            <div class="py-10 sm:py-20">
-                <h1 class="text-4xl sm:text-6xl font-display font-bold leading-tight">
+        <div class="relative z-10 text-center text-white max-w-screen-md mx-auto px-8 sm:px-20">
+            <div class="py-15 sm:py-20">
+                <h1 class="text-4xl sm:text-6xl font-bold font-display leading-tight">
                     Some blog entry headline that's quite long
                 </h1>
             </div>
         </div>
+    </div>
 
-        <!-- Content Box with responsive padding -->
-        <div class="max-w-screen-md mx-auto bg-white text-black p-8 sm:p-20">
-            <p class="mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
-            
-            <p class="mb-6">Ut aliquam sollicitudin iaculis. Praesent ac semper ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus eget tempor dolor.</p>
-            
-            <p class="mb-6">Donec ut libero pretium, efficitur nisl vel, sagittis elit. Fusce a est in odio vehicula fermentum eu vel diam. Etiam non magna id nunc tempus scelerisque.</p>
-            
-            <p class="mb-6">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.</p>
-            
-            <p class="mb-6">Sed turpis tincidunt, lacinia velit tempus, efficitur nisl. Nunc at risus sed metus eleifend commodo. Duis vel sem ut eros sodales venenatis.</p>
-            
-            <p class="mb-6">Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
-            
-            <p class="mb-6">Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            
-            <p class="mb-6">Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-            
-            <!-- Extra paragraphs to enable scrolling for parallax effect -->
-            <p class="mb-6">Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            
-            <p class="mb-6">Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-            
-            <p class="mb-6">Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+    <!-- Mobile Menu (Full Screen) - No transitions -->
+    <div 
+        x-cloak
+        x-show="mobileMenuOpen" 
+        class="fixed inset-0 bg-black z-50"
+    >
+        <div class="px-8 sm:px-20 max-w-screen-md mx-auto">
+            <!-- Mobile Menu Header with Close Button -->
+            <div class="flex justify-between items-center py-6">
+                <div class="text-2xl font-bold text-white">LOGO</div>
+                <!-- Close Button in same position as hamburger -->
+                <button 
+                    class="text-white focus:outline-none"
+                    @click="mobileMenuOpen = false"
+                >
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
         </div>
         
-        <!-- Black Footer with smaller navigation (always visible) -->
-        <footer class="bg-black text-white py-10">
-            <div class="flex justify-center px-8 sm:px-20">
-                <div class="flex justify-between items-center w-full max-w-screen-md">
-                    <div class="text-lg font-bold">LOGO</div>
-                    <div class="flex space-x-4 sm:space-x-6 text-xs sm:text-sm">
-                        <a href="#" class="hover:text-gray-300">Link 1</a>
-                        <a href="#" class="hover:text-gray-300">Link 2</a>
-                        <a href="#" class="hover:text-gray-300">Link 3</a>
-                    </div>
+        <!-- Mobile Menu Links -->
+        <div class="flex flex-col items-center justify-center h-[80vh] space-y-8 text-xl">
+            <a href="#" class="text-white hover:text-gray-300" @click="mobileMenuOpen = false">Link 1</a>
+            <a href="#" class="text-white hover:text-gray-300" @click="mobileMenuOpen = false">Link 2</a>
+            <a href="#" class="text-white hover:text-gray-300" @click="mobileMenuOpen = false">Link 3</a>
+        </div>
+    </div>
+
+    <!-- Content Box with responsive padding -->
+    <div class="max-w-screen-md mx-auto bg-white text-black p-8 sm:p-20 -mt-40 relative z-10">
+        <p class="mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh porttitor.</p>
+        
+        <p class="mb-6">Ut aliquam sollicitudin iaculis. Praesent ac semper ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vivamus eget tempor dolor.</p>
+        
+        <p class="mb-6">Donec ut libero pretium, efficitur nisl vel, sagittis elit. Fusce a est in odio vehicula fermentum eu vel diam. Etiam non magna id nunc tempus scelerisque.</p>
+        
+        <p class="mb-6">Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.</p>
+        
+        <p class="mb-6">Sed turpis tincidunt, lacinia velit tempus, efficitur nisl. Nunc at risus sed metus eleifend commodo. Duis vel sem ut eros sodales venenatis.</p>
+        
+        <p class="mb-6">Cras mattis consectetur purus sit amet fermentum. Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</p>
+        
+        <p class="mb-6">Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        
+        <p class="mb-6">Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+        
+        <!-- Extra paragraphs to enable scrolling for parallax effect -->
+        <p class="mb-6">Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        
+        <p class="mb-6">Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+        
+        <p class="mb-6">Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
+    </div>
+    
+    <!-- Black Footer with smaller navigation (always visible) -->
+    <footer class="bg-black text-white py-10 mt-20">
+        <div class="flex justify-center px-8 sm:px-20">
+            <div class="flex justify-between items-center w-full max-w-screen-md">
+                <div class="text-lg font-bold">LOGO</div>
+                <div class="flex space-x-4 sm:space-x-6 text-xs sm:text-sm">
+                    <a href="#" class="hover:text-gray-300">Link 1</a>
+                    <a href="#" class="hover:text-gray-300">Link 2</a>
+                    <a href="#" class="hover:text-gray-300">Link 3</a>
                 </div>
             </div>
-        </footer>
-    </div>
+        </div>
+    </footer>
 </body>
 </html>

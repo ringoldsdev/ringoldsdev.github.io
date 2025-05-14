@@ -30,6 +30,7 @@ import "../styles/global.css";
         [x-cloak] {
             display: none !important;
         }
+
     </style>
 </head>
 <body x-data="{ scrollPosition: 0, mobileMenuOpen: false }" @scroll.window="scrollPosition = window.scrollY" class="bg-white" :class="{ 'no-scroll': mobileMenuOpen }">
@@ -38,10 +39,18 @@ import "../styles/global.css";
         <!-- Text overlay as background texture with parallax effect -->
         <div class="absolute inset-0 w-full h-full overflow-hidden">
             <div 
-                class="text-darker-gray text-[50vw] sm:text-[33vw] font-black font-display leading-[0.9] text-center uppercase absolute top-1/2 left-1/2 w-[150%]  select-none"
+                class="text-darker-gray text-[50vw] sm:text-[25vw] font-black font-display leading-[0.9] text-center uppercase absolute top-1/2 left-1/2 w-[150%]  select-none"
                 x-bind:style="'transform: translate(-50%, -50%) rotate(45deg) translateY(' + scrollPosition * 0.6 + 'px)'"
             >
                 Some blog entry headline thats quite long
+            </div>
+        </div>
+
+        
+        <!-- Red blob with horizontal parallax effect - positioned directly in the header -->'
+        <div class="absolute top-0 bottom-0 left-0 right-0">
+            <div class="max-w-screen-xl mx-auto h-full flex justify-end items-end">
+                <img src="/images/example.png" class=" select-none h-[80%]" x-bind:style="'transform: translateY(' + scrollPosition * 0.67 + 'px)'"/>
             </div>
         </div>
 
@@ -72,7 +81,7 @@ import "../styles/global.css";
         <!-- Headline with same padding as content -->
         <div class="relative z-10 text-center text-white max-w-screen-md mx-auto px-8 sm:px-20">
             <div class="py-15 sm:py-20">
-                <h1 class="text-4xl sm:text-6xl font-bold font-display leading-tight">
+                <h1 class="text-4xl sm:text-6xl font-bold font-display leading-tight text-stroke">
                     Some blog entry headline that's quite long
                 </h1>
             </div>
@@ -136,7 +145,7 @@ import "../styles/global.css";
     </div>
     
     <!-- Black Footer with smaller navigation (always visible) -->
-    <footer class="bg-black text-white py-10 mt-20">
+    <footer class="bg-black text-white py-10">
         <div class="flex justify-center px-8 sm:px-20">
             <div class="flex justify-between items-center w-full max-w-screen-md">
                 <div class="text-lg font-bold">LOGO</div>

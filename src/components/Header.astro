@@ -1,0 +1,25 @@
+---
+// Header.astro: Blog entry header section
+export interface Props {
+  title: string;
+  date: string;
+  tags: string[];
+}
+const { title, date, tags } = Astro.props as Props;
+---
+<div class="relative z-10 text-white max-w-screen-md mx-auto px-6 sm:px-20">
+  <div class="py-15 sm:py-20 text-center">
+    <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold font-display leading-tight">
+      {title}
+    </h1>
+    <div class="mt-6 text-sm text-gray-300">
+      Published on {date}
+    </div>
+    <!-- Tags List -->
+    <div class="mt-4 flex flex-wrap justify-center gap-2">
+      {tags.map(tag => (
+        <a href={`/tags/${tag.toLowerCase()}`} class="px-4 py-2 rounded-full text-xs text-gray-300 transition-colors duration-200 hover:bg-white bg-[hsl(0,0%,7%)] hover:text-black tag-pill select-none cursor-pointer">{tag}</a>
+      ))}
+    </div>
+  </div>
+</div>

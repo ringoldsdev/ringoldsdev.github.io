@@ -1,7 +1,10 @@
 ---
 import "@/styles/global.css";
-import LinkedInIcon from "@/components/LinkedInIcon.astro";
-import GitHubIcon from "@/components/GitHubIcon.astro";
+import Navigation from "@/components/Navigation.astro";
+import Header from "@/components/Header.astro";
+import Footer from "@/components/Footer.astro";
+import MobileMenu from "@/components/MobileMenu.astro"; // Import the new component
+import ParallaxTextOverlay from "@/components/ParallaxTextOverlay.astro";
 ---
 
 <!DOCTYPE html>
@@ -23,119 +26,22 @@ import GitHubIcon from "@/components/GitHubIcon.astro";
         [x-cloak] {
             display: none !important;
         }
-
     </style>
 </head>
 <body x-data="{ scrollPosition: 0, mobileMenuOpen: false }" @scroll.window="scrollPosition = window.scrollY" class="bg-white" :class="{ 'no-scroll': mobileMenuOpen }">
     <!-- Black background section with relative positioning -->
     <div class="relative bg-black w-full sm:pb-40 overflow-hidden">
-        <!-- Text overlay as background texture with parallax effect -->
-        <div class="absolute inset-0 w-full h-full overflow-hidden">
-            <div 
-                class="text-[hsl(0,0%,7%)] text-[33vw] sm:text-[25vw] font-black font-display leading-[0.9] text-center uppercase absolute top-1/2 left-1/2 w-[150%]  select-none"
-                x-bind:style="'transform: translate(-50%, -50%) rotate(45deg) translateY(' + scrollPosition * 0.6 + 'px)'"
-            >
-                Some blog entry headline thats quite long
-            </div>
-        </div>
+        <ParallaxTextOverlay text="Some blog entry headline thats quite long"/>
 
-        
-        <!-- Navigation Bar with transparent background -->
-        <div class="relative z-10 flex justify-center text-white px-6 sm:px-20">
-            <nav class="flex justify-between items-center pt-5 w-full max-w-screen-md">
-                <div class="text-2xl font-bold">LOGO</div>
-                
-                <!-- Desktop Navigation -->
-                <div class="hidden sm:flex items-center space-x-8">
-                    <a href="#" class="hover:text-gray-300">Blog</a>
-                    <a href="#" class="hover:text-gray-300">Snippets</a>
-                    <a href="#" class="hover:text-gray-300">Projects</a>
-                    
-                    <!-- Icons with double spacing -->
-                    <div class="flex items-center space-x-4 ml-8">
-                        <a href="#" class="hover:text-gray-300">
-                            <LinkedInIcon />
-                        </a>
-                        <a href="#" class="hover:text-gray-300">
-                            <GitHubIcon />
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Mobile Hamburger Button -->
-                <button 
-                    class="sm:hidden text-white focus:outline-none"
-                    @click="mobileMenuOpen = true"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                    </svg>
-                </button>
-            </nav>
-        </div>
-
-        <!-- Headline with same padding as content -->
-        <div class="relative z-10 text-white max-w-screen-md mx-auto px-6 sm:px-20">
-            <div class="py-15 sm:py-20 text-center">
-                <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold font-display leading-tight">
-                    Some blog entry headline that's quite long
-                </h1>
-
-                <div class="mt-6 text-sm text-gray-300">
-                    Published on March 15, 2024
-                </div>
-        
-                <!-- Tags List -->
-                <div class="mt-4 flex flex-wrap justify-center gap-2">
-                    <a href="#" class="px-4 py-2 rounded-full text-xs text-gray-300 transition-colors duration-200 hover:bg-white bg-[hsl(0,0%,7%)] hover:text-black tag-pill select-none cursor-pointer">Design</a>
-                    <a href="#" class="px-4 py-2 rounded-full text-xs text-gray-300 transition-colors duration-200 hover:bg-white bg-[hsl(0,0%,7%)] hover:text-black tag-pill select-none cursor-pointer">Web Development</a>
-                    <a href="#" class="px-4 py-2 rounded-full text-xs text-gray-300 transition-colors duration-200 hover:bg-white bg-[hsl(0,0%,7%)] hover:text-black tag-pill select-none cursor-pointer">CSS</a>
-                    <a href="#" class="px-4 py-2 rounded-full text-xs text-gray-300 transition-colors duration-200 hover:bg-white bg-[hsl(0,0%,7%)] hover:text-black tag-pill select-none cursor-pointer">JavaScript</a>
-                </div>
-
-            </div>
-        </div>
+        <Navigation />
+        <Header 
+          title="Some blog entry headline that's quite long" 
+          date="March 15, 2024" 
+          tags={["Design", "Web Development", "CSS", "JavaScript"]} 
+        />
     </div>
 
-    <!-- Mobile Menu (Full Screen) - No transitions -->
-    <div 
-        x-cloak
-        x-show="mobileMenuOpen" 
-        class="fixed inset-0 bg-black z-50"
-    >
-        <div class="px-8 sm:px-20 max-w-[740px] mx-auto">
-            <!-- Mobile Menu Header with Close Button -->
-            <div class="flex justify-between items-center py-6">
-                <div class="text-2xl font-bold text-white">LOGO</div>
-                <!-- Close Button in same position as hamburger -->
-                <button 
-                    class="text-white focus:outline-none"
-                    @click="mobileMenuOpen = false"
-                >
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-        </div>
-        
-        <!-- Mobile Menu Links -->
-        <div class="flex flex-col items-center justify-center h-[80vh] space-y-8 text-xl">
-            <a href="#" class="text-white hover:text-gray-300" @click="mobileMenuOpen = false">Blog</a>
-            <a href="#" class="text-white hover:text-gray-300" @click="mobileMenuOpen = false">Snippets</a>
-            <a href="#" class="text-white hover:text-gray-300" @click="mobileMenuOpen = false">Projects</a>
-            
-            <!-- Icons with spacing -->
-            <div class="flex items-center space-x-6 mt-8">
-                <a href="#" class="text-white hover:text-gray-300" @click="mobileMenuOpen = false">
-                    <LinkedInIcon />
-                </a>
-                <a href="#" class="text-white hover:text-gray-300" @click="mobileMenuOpen = false">
-                    <GitHubIcon />
-                </a>
-            </div>
-        </div>
-    </div>
+    <MobileMenu />
 
     <!-- Content Box with responsive padding -->
     <div class="max-w-screen-md mx-auto bg-white text-black p-6 sm:p-20 -mt-5 sm:-mt-40 relative z-10">
@@ -163,28 +69,6 @@ import GitHubIcon from "@/components/GitHubIcon.astro";
         <p class="mb-6">Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit libero, a pharetra augue.</p>
     </div>
     
-    <!-- Black Footer with smaller navigation (always visible) -->
-    <footer class="bg-black text-white py-4 sm:py-10">
-        <div class="flex justify-center px-8 sm:px-20">
-            <div class="flex justify-between items-center w-full max-w-[740px]">
-                <div class="text-lg font-bold">LOGO</div>
-                <div class="flex space-x-4 sm:space-x-6 text-xs sm:text-sm">
-                    <a href="#" class="hover:text-gray-300">Blog</a>
-                    <a href="#" class="hover:text-gray-300">Snippets</a>
-                    <a href="#" class="hover:text-gray-300">Projects</a>
-                    
-                    <!-- Icons with spacing -->
-                    <div class="flex items-center space-x-3 ml-6">
-                        <a href="#" class="hover:text-gray-300">
-                            <LinkedInIcon size=16 />
-                        </a>
-                        <a href="#" class="hover:text-gray-300">
-                            <GitHubIcon size=16 />
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <Footer />
 </body>
 </html>

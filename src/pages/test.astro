@@ -15,15 +15,6 @@ import "../styles/global.css";
             padding: 0;
             background-color: white;
         }
-        .z-behind-2 {
-            z-index: -2;
-        }
-        .z-behind-1 {
-            z-index: -1;
-        }
-        .text-darker-gray {
-            color: hsl(0, 0%, 7%); /* Darker text color */
-        }
         .no-scroll {
             overflow: hidden;
         }
@@ -39,7 +30,7 @@ import "../styles/global.css";
         <!-- Text overlay as background texture with parallax effect -->
         <div class="absolute inset-0 w-full h-full overflow-hidden">
             <div 
-                class="text-darker-gray text-[33vw] sm:text-[25vw] font-black font-display leading-[0.9] text-center uppercase absolute top-1/2 left-1/2 w-[150%]  select-none"
+                class="text-[hsl(0,0%,7%)] text-[33vw] sm:text-[25vw] font-black font-display leading-[0.9] text-center uppercase absolute top-1/2 left-1/2 w-[150%]  select-none"
                 x-bind:style="'transform: translate(-50%, -50%) rotate(45deg) translateY(' + scrollPosition * 0.6 + 'px)'"
             >
                 Some blog entry headline thats quite long
@@ -47,13 +38,6 @@ import "../styles/global.css";
         </div>
 
         
-        <!-- Red blob with horizontal parallax effect - positioned directly in the header -->
-        <div class="absolute top-0 bottom-0 left-0 right-0">
-            <div class="max-w-[68rem] mx-auto h-full flex justify-end items-end ">
-                <img src="/images/example.png" class=" select-none h-[67%] sm:h-[87%]" x-bind:style="'transform: translateY(' + scrollPosition * 0.67 + 'px)'"/>
-            </div>
-        </div>
-
         <!-- Navigation Bar with transparent background -->
         <div class="relative z-10 flex justify-center text-white px-6 sm:px-20">
             <nav class="flex justify-between items-center pt-5 w-full max-w-screen-md">
@@ -80,10 +64,23 @@ import "../styles/global.css";
 
         <!-- Headline with same padding as content -->
         <div class="relative z-10 text-white max-w-screen-md mx-auto px-6 sm:px-20">
-            <div class="py-15 sm:py-20 max-w-[70%] sm:max-w-[80%]">
+            <div class="py-15 sm:py-20 text-center">
                 <h1 class="text-3xl sm:text-4xl lg:text-6xl font-bold font-display leading-tight">
                     Some blog entry headline that's quite long
                 </h1>
+
+                <div class="mt-6 text-sm text-gray-300">
+                    Published on March 15, 2024
+                </div>
+        
+                <!-- Tags List -->
+                <div class="mt-4 flex flex-wrap justify-center gap-2">
+                    <a href="#" class="px-4 py-2 rounded-full text-xs text-gray-300 transition-colors duration-200 hover:bg-white bg-[hsl(0,0%,7%)] hover:text-black tag-pill select-none cursor-pointer">Design</a>
+                    <a href="#" class="px-4 py-2 rounded-full text-xs text-gray-300 transition-colors duration-200 hover:bg-white bg-[hsl(0,0%,7%)] hover:text-black tag-pill select-none cursor-pointer">Web Development</a>
+                    <a href="#" class="px-4 py-2 rounded-full text-xs text-gray-300 transition-colors duration-200 hover:bg-white bg-[hsl(0,0%,7%)] hover:text-black tag-pill select-none cursor-pointer">CSS</a>
+                    <a href="#" class="px-4 py-2 rounded-full text-xs text-gray-300 transition-colors duration-200 hover:bg-white bg-[hsl(0,0%,7%)] hover:text-black tag-pill select-none cursor-pointer">JavaScript</a>
+                </div>
+
             </div>
         </div>
     </div>

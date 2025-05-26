@@ -122,6 +122,6 @@
 
 @layer base {
 	:root {
-		--breakpoint-md: 52rem;
+		--breakpoint-md: 48rem;
 	}
 }

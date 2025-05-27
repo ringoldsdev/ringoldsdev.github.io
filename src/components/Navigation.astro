@@ -4,30 +4,31 @@ import LinkedInIcon from "@/components/LinkedInIcon.astro";
 import GitHubIcon from "@/components/GitHubIcon.astro";
 import HamburgerIcon from "@/components/HamburgerIcon.astro"; // Import the new HamburgerIcon component
 ---
+
 <div class="relative z-10 flex justify-center text-white px-6 sm:px-20">
-  <nav class="flex justify-between items-center pt-5 w-full max-w-screen-md">
-    <div class="text-2xl font-bold">LOGO</div>
-    <!-- Desktop Navigation -->
-    <div class="hidden sm:flex items-center space-x-8">
-      <a href="#" class="hover:text-gray-300">Blog</a>
-      <a href="#" class="hover:text-gray-300">Snippets</a>
-      <a href="#" class="hover:text-gray-300">Projects</a>
-      <!-- Icons with double spacing -->
-      <div class="flex items-center space-x-4 ml-8">
-        <a href="#" class="hover:text-gray-300">
-          <LinkedInIcon />
-        </a>
-        <a href="#" class="hover:text-gray-300">
-          <GitHubIcon />
-        </a>
-      </div>
-    </div>
-    <!-- Mobile Hamburger Button -->
-    <button 
-      class="sm:hidden text-white focus:outline-none"
-      @click="mobileMenuOpen = true"
-    >
-      <HamburgerIcon />
-    </button>
-  </nav>
+	<nav class="flex justify-between items-center pt-5 w-full max-w-screen-md">
+		<div class="text-2xl font-bold">LOGO</div>
+		<!-- Desktop Navigation -->
+		<div class="hidden sm:flex items-center space-x-8">
+			<a href="#" class="hover:text-gray-300">Blog</a>
+			<a href="#" class="hover:text-gray-300">Snippets</a>
+			<a href="#" class="hover:text-gray-300">Projects</a>
+			<!-- Icons with double spacing -->
+			<div class="flex items-center space-x-4 ml-8">
+				<a href="#" class="hover:text-gray-300">
+					<LinkedInIcon />
+				</a>
+				<a href="#" class="hover:text-gray-300">
+					<GitHubIcon />
+				</a>
+			</div>
+		</div>
+		<!-- Mobile Hamburger Button -->
+		<button
+			class="sm:hidden text-white focus:outline-none"
+			@click="mobileMenuOpen = true"
+		>
+			<HamburgerIcon />
+		</button>
+	</nav>
 </div>

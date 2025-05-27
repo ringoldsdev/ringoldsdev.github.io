@@ -1,11 +1,21 @@
 ---
 // LinkedInIcon.astro: LinkedIn SVG icon as a reusable Astro component
 export interface Props {
-  size?: number | string;
+	size?: number | string;
 }
 const { size = 20 } = Astro.props as Props;
 ---
 
-<svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="m18 15-6-6-6 6"/>
+<svg
+	xmlns="http://www.w3.org/2000/svg"
+	width={size}
+	height={size}
+	viewBox="0 0 24 24"
+	fill="none"
+	stroke="currentColor"
+	stroke-width="2"
+	stroke-linecap="round"
+	stroke-linejoin="round"
+>
+	<path d="m18 15-6-6-6 6"></path>
 </svg>

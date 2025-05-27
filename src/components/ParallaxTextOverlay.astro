@@ -1,16 +1,17 @@
 ---
 // src/components/ParallaxTextOverlay.astro
 export interface Props {
-  text: string;
+	text: string;
 }
 
 const { text } = Astro.props;
 ---
+
 <div class="absolute inset-0 w-full h-full overflow-hidden">
-  <div 
-    class="text-[hsl(0,0%,7%)] text-[33vw] sm:text-[25vw] font-black font-display leading-[0.9] text-center uppercase absolute top-1/2 left-1/2 w-[150%] select-none"
-    x-bind:style="`transform: translate(-50%, -50%) rotate(45deg) translateY(${scrollPosition * 0.6}px)`"
-  >
-    {text}
-  </div>
+	<div
+		class="text-[hsl(0,0%,7%)] text-[33vw] sm:text-[25vw] font-black font-display leading-[0.9] text-center uppercase absolute top-1/2 left-1/2 w-[150%] select-none"
+		x-bind:style="`transform: translate(-50%, -50%) rotate(45deg) translateY(${scrollPosition * 0.6}px)`"
+	>
+		{text}
+	</div>
 </div>

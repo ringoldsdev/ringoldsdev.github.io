@@ -1,35 +1,42 @@
 ---
 export const prerender = true;
 
-import { getCollection } from 'astro:content';
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
 const { slug } = Astro.params;
 
-
 export async function getStaticPaths() {
-  const blogs = await getCollection("blog");
-  return [...new Set(blogs.map((blog) => blog.data.tags).flat())].map((tag) => ({
-    params: { slug: tag },
-  }));
+	const blogs = await getCollection("blog");
+	return [...new Set(blogs.map((blog) => blog.data.tags).flat())].map(
+		(tag) => ({
+			params: { slug: tag },
+		}),
+	);
 }
 
 if (!slug) {
-  return Astro.redirect('/404');
+	return Astro.redirect("/404");
 }
 
-const allBlogPostsWithTag = await getCollection('blog', (post) => (post.data?.tags || []).includes(slug));
+const allBlogPostsWithTag = await getCollection("blog", (post) =>
+	(post.data?.tags || []).includes(slug),
+);
 
 if (allBlogPostsWithTag.length === 0) {
-  return Astro.redirect('/404');
+	return Astro.redirect("/404");
 }
 ---
 
 <BaseLayout title={slug}>
-<h1>Posts tagged with "{slug}"</h1>
-<ul>
-  {allBlogPostsWithTag.map(post => (
-    <li><a href={`/blog/${post.id}/`}>{post.data.title}</a></li>
-  ))}
-</ul>
+	<h1>Posts tagged with "{slug}"</h1>
+	<ul>
+		{
+			allBlogPostsWithTag.map((post) => (
+				<li>
+					<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+				</li>
+			))
+		}
+	</ul>
 </BaseLayout>

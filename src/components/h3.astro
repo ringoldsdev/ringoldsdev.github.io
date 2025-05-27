@@ -1,12 +1,30 @@
 ---
 import slugify from "slugify";
+import { Icon } from "astro-icon/components";
 
 const id = await Astro.slots.render("default").then((content) => {
 	return slugify(content, { lower: true });
 });
+
+const slotContent = await Astro.slots
+	.render("default")
+	.then((content) => content.trim());
+const words = slotContent.split(/\s+/);
+const lastWord = words.pop();
+const beforeLast = words.join(" ");
 ---
 
-<h3 id={id}>
-	<slot />
-	<a href=`#${id}`>@</a>
+<h3 class="group inline leading-tight" id={id}>
+	{beforeLast}
+	{beforeLast && " "}
+	<span class="inline-flex items-center gap-2 whitespace-nowrap">
+		{lastWord}
+		<a
+			href={`#${id}`}
+			class="inline align-middle opacity-25 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+			aria-label={`Link to section: ${id}`}
+		>
+			<Icon name="link" size="20" class="align-middle" />
+		</a>
+	</span>
 </h3>

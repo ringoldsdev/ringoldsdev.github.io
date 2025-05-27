@@ -1,8 +1,6 @@
 ---
 // Footer.astro: Blog footer section
-import LinkedInIcon from "@/components/LinkedInIcon.astro";
-import GitHubIcon from "@/components/GitHubIcon.astro";
-import ArrowUpIcon from "./ArrowUpIcon.astro";
+import { Icon } from "astro-icon/components";
 ---
 
 <footer class="bg-black text-white py-5 sm:py-10">
@@ -11,13 +9,13 @@ import ArrowUpIcon from "./ArrowUpIcon.astro";
 			<div class="text-lg font-bold">LOGO</div>
 			<div class="flex items-center space-x-4">
 				<a href="#" class="hover:text-gray-300">
-					<LinkedInIcon size="24" />
+					<Icon name="linkedin" size="24" />
 				</a>
 				<a href="#" class="hover:text-gray-300">
-					<GitHubIcon size="24" />
+					<Icon name="github" size="24" />
 				</a>
 				<a href="#" class="hover:text-gray-300 ml-4">
-					<ArrowUpIcon size="24" />
+					<Icon name="up-arrow" size="24" />
 				</a>
 			</div>
 		</div>

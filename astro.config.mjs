@@ -8,12 +8,13 @@ import partytown from "@astrojs/partytown";
 
 import sitemap from "@astrojs/sitemap";
 
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 
 import sectionize from "@hbsnow/rehype-sectionize";
 
 import rehypeShiftHeading from "rehype-shift-heading";
+
+import icon from "astro-icon";
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,6 +25,7 @@ export default defineConfig({
 		mdx(),
 		partytown(),
 		sitemap(),
+		icon(),
 	],
 	vite: {
 		plugins: [tailwindcss()],

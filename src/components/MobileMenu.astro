@@ -4,6 +4,8 @@ import LinkedInIcon from "@/components/LinkedInIcon.astro";
 import GitHubIcon from "@/components/GitHubIcon.astro";
 import CrossIcon from "@/components/CrossIcon.astro"; // Import the new CrossIcon component
 
+import { Icon } from "astro-icon/components";
+
 // This component relies on `mobileMenuOpen` being defined in an Alpine.js
 // x-data context in its parent scope, typically on the <body> tag.
 ---
@@ -18,7 +20,7 @@ import CrossIcon from "@/components/CrossIcon.astro"; // Import the new CrossIco
 				class="text-white focus:outline-none"
 				@click="mobileMenuOpen = false"
 			>
-				<CrossIcon />
+				<Icon name="cross" size="24" />
 			</button>
 		</div>
 	</div>
@@ -50,14 +52,14 @@ import CrossIcon from "@/components/CrossIcon.astro"; // Import the new CrossIco
 				class="text-white hover:text-gray-300"
 				@click="mobileMenuOpen = false"
 			>
-				<LinkedInIcon size="24" />
+				<Icon name="linkedin" size="32" />
 			</a>
 			<a
 				href="#"
 				class="text-white hover:text-gray-300"
 				@click="mobileMenuOpen = false"
 			>
-				<GitHubIcon size="24" />
+				<Icon name="github" size="32" />
 			</a>
 		</div>
 	</div>

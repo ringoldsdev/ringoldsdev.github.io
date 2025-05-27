@@ -1,8 +1,7 @@
 ---
 // Navigation.astro: Navigation bar component
-import LinkedInIcon from "@/components/LinkedInIcon.astro";
-import GitHubIcon from "@/components/GitHubIcon.astro";
-import HamburgerIcon from "@/components/HamburgerIcon.astro"; // Import the new HamburgerIcon component
+
+import { Icon } from "astro-icon/components";
 ---
 
 <div class="relative z-10 flex justify-center text-white px-6 sm:px-20">
@@ -16,10 +15,10 @@ import HamburgerIcon from "@/components/HamburgerIcon.astro"; // Import the new 
 			<!-- Icons with double spacing -->
 			<div class="flex items-center space-x-4 ml-8">
 				<a href="#" class="hover:text-gray-300">
-					<LinkedInIcon />
+					<Icon name="linkedin" size="24" />
 				</a>
 				<a href="#" class="hover:text-gray-300">
-					<GitHubIcon />
+					<Icon name="github" size="24" />
 				</a>
 			</div>
 		</div>
@@ -28,7 +27,7 @@ import HamburgerIcon from "@/components/HamburgerIcon.astro"; // Import the new 
 			class="sm:hidden text-white focus:outline-none"
 			@click="mobileMenuOpen = true"
 		>
-			<HamburgerIcon />
+			<Icon name="hamburger" size="24" />
 		</button>
 	</nav>
 </div>

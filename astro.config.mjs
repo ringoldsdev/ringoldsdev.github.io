@@ -33,7 +33,7 @@ export default defineConfig({
 	markdown: {
 		rehypePlugins: [
 			rehypeHeadingIds,
-			sectionize,
+			// sectionize,
 			[rehypeShiftHeading, { shift: 1 }],
 			// 			[
 			// 				rehypeAutolinkHeadings,

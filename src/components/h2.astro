@@ -14,17 +14,23 @@ const lastWord = words.pop();
 const beforeLast = words.join(" ");
 ---
 
-<h2 class="group inline leading-tight" id={id}>
-	{beforeLast}
-	{beforeLast && " "}
-	<span class="inline-flex items-center gap-2 whitespace-nowrap">
-		{lastWord}
-		<a
-			href={`#${id}`}
-			class="inline align-middle opacity-25 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
-			aria-label={`Link to section: ${id}`}
-		>
-			<Icon name="link" size="24" class="align-middle" />
-		</a>
-	</span>
-</h2>
+<div class="pt-6">
+	<h2 class="group inline leading-tight" id={id}>
+		{beforeLast}
+		{beforeLast && " "}
+		<span class="inline-flex items-center gap-2 whitespace-nowrap">
+			{lastWord}
+			<a
+				href={`#${id}`}
+				class="inline align-middle opacity-25 group-hover:opacity-100 transition-opacity duration-200 cursor-pointer"
+				aria-label={`Link to section: ${id}`}
+			>
+				<Icon
+					name="link"
+					size="24"
+					class="align-middle text-gray-900 dark:text-gray-400"
+				/>
+			</a>
+		</span>
+	</h2>
+</div>

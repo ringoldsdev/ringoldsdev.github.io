@@ -5,6 +5,7 @@ import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import MobileMenu from "@/components/MobileMenu.astro"; // Import the new component
 import ParallaxTextOverlay from "@/components/ParallaxTextOverlay.astro";
+import NavigationPlaceholder from "@/components/NavigationPlaceholder.astro";
 ---
 
 <!doctype html>
@@ -34,11 +35,11 @@ import ParallaxTextOverlay from "@/components/ParallaxTextOverlay.astro";
 		class="bg-white"
 		:class="{ 'no-scroll': mobileMenuOpen }"
 	>
+		<Navigation />
 		<!-- Black background section with relative positioning -->
 		<div class="relative bg-black w-full sm:pb-40 overflow-hidden">
 			<ParallaxTextOverlay text="Some blog entry headline thats quite long" />
-
-			<Navigation />
+			<NavigationPlaceholder />
 			<Header
 				title="Some blog entry headline that's quite long"
 				date="March 15, 2024"
@@ -49,80 +50,81 @@ import ParallaxTextOverlay from "@/components/ParallaxTextOverlay.astro";
 		<MobileMenu />
 
 		<!-- Content Box with responsive padding -->
-         <div class="lg:max-w-screen-md mx-auto bg-white text-black -mt-5 sm:-mt-40 relative z-10">
-
-         
 		<div
-			class="max-w-screen-md p-6 sm:p-20 mx-auto"
+			class="lg:max-w-screen-md mx-auto bg-white text-black -mt-5 sm:-mt-40 relative z-10"
 		>
-			<p class="mb-6">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui
-				mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor
-				neque eu tellus rhoncus ut eleifend nibh porttitor.
-			</p>
+			<div class="max-w-screen-md p-6 sm:p-20 mx-auto">
+				<p class="mb-6">
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui
+					mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor
+					neque eu tellus rhoncus ut eleifend nibh porttitor.
+				</p>
 
-			<p class="mb-6">
-				Ut aliquam sollicitudin iaculis. Praesent ac semper ante. Interdum et
-				malesuada fames ac ante ipsum primis in faucibus. Vivamus eget tempor
-				dolor.
-			</p>
+				<p class="mb-6">
+					Ut aliquam sollicitudin iaculis. Praesent ac semper ante. Interdum et
+					malesuada fames ac ante ipsum primis in faucibus. Vivamus eget tempor
+					dolor.
+				</p>
 
-			<p class="mb-6">
-				Donec ut libero pretium, efficitur nisl vel, sagittis elit. Fusce a est
-				in odio vehicula fermentum eu vel diam. Etiam non magna id nunc tempus
-				scelerisque.
-			</p>
+				<p class="mb-6">
+					Donec ut libero pretium, efficitur nisl vel, sagittis elit. Fusce a
+					est in odio vehicula fermentum eu vel diam. Etiam non magna id nunc
+					tempus scelerisque.
+				</p>
 
-			<p class="mb-6">
-				Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere
-				cubilia curae; Donec pharetra, magna vestibulum aliquet ultrices, erat
-				tortor sollicitudin mi, sit amet lobortis sapien sapien non mi.
-			</p>
+				<p class="mb-6">
+					Vestibulum ante ipsum primis in faucibus orci luctus et ultrices
+					posuere cubilia curae; Donec pharetra, magna vestibulum aliquet
+					ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien
+					non mi.
+				</p>
 
-			<p class="mb-6">
-				Sed turpis tincidunt, lacinia velit tempus, efficitur nisl. Nunc at
-				risus sed metus eleifend commodo. Duis vel sem ut eros sodales
-				venenatis.
-			</p>
+				<p class="mb-6">
+					Sed turpis tincidunt, lacinia velit tempus, efficitur nisl. Nunc at
+					risus sed metus eleifend commodo. Duis vel sem ut eros sodales
+					venenatis.
+				</p>
 
-			<p class="mb-6">
-				Cras mattis consectetur purus sit amet fermentum. Sed posuere
-				consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem
-				lacinia quam venenatis vestibulum.
-			</p>
+				<p class="mb-6">
+					Cras mattis consectetur purus sit amet fermentum. Sed posuere
+					consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare
+					sem lacinia quam venenatis vestibulum.
+				</p>
 
-			<p class="mb-6">
-				Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis
-				ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id
-				elit.
-			</p>
+				<p class="mb-6">
+					Curabitur blandit tempus porttitor. Nullam quis risus eget urna mollis
+					ornare vel eu leo. Nullam id dolor id nibh ultricies vehicula ut id
+					elit.
+				</p>
 
-			<p class="mb-6">
-				Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur
-				purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
-			</p>
+				<p class="mb-6">
+					Etiam porta sem malesuada magna mollis euismod. Cras mattis
+					consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla
+					sed consectetur.
+				</p>
 
-			<!-- Extra paragraphs to enable scrolling for parallax effect -->
-			<p class="mb-6">
-				Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras
-				mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac
-				cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-				sit amet risus.
-			</p>
+				<!-- Extra paragraphs to enable scrolling for parallax effect -->
+				<p class="mb-6">
+					Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras
+					mattis consectetur purus sit amet fermentum. Fusce dapibus, tellus ac
+					cursus commodo, tortor mauris condimentum nibh, ut fermentum massa
+					justo sit amet risus.
+				</p>
 
-			<p class="mb-6">
-				Aenean lacinia bibendum nulla sed consectetur. Cras justo odio, dapibus
-				ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida
-				at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-			</p>
+				<p class="mb-6">
+					Aenean lacinia bibendum nulla sed consectetur. Cras justo odio,
+					dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta
+					gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut
+					id elit.
+				</p>
 
-			<p class="mb-6">
-				Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui.
-				Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit
-				libero, a pharetra augue.
-			</p>
+				<p class="mb-6">
+					Cras mattis consectetur purus sit amet fermentum. Donec sed odio dui.
+					Donec ullamcorper nulla non metus auctor fringilla. Nulla vitae elit
+					libero, a pharetra augue.
+				</p>
+			</div>
 		</div>
-</div>
 		<Footer />
 	</body>
 </html>

@@ -1,0 +1,15 @@
+---
+const { class: className, ...rest } = Astro.props;
+---
+
+<div
+	class:list={["relative w-full sm:pb-40 overflow-hidden", className]}
+	{...rest}
+>
+	<slot name="background" />
+	<div class="relative z-10 text-white max-w-screen-md mx-auto px-6 sm:px-20">
+		<div class="pt-10 pb-8 sm:text-center text-white">
+			<slot />
+		</div>
+	</div>
+</div>

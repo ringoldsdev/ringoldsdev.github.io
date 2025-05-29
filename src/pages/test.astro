@@ -1,11 +1,11 @@
 ---
 import "@/styles/global.css";
 import Navigation from "@/components/Navigation.astro";
-import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
 import MobileMenu from "@/components/MobileMenu.astro"; // Import the new component
 import ParallaxTextOverlay from "@/components/ParallaxTextOverlay.astro";
 import NavigationPlaceholder from "@/components/NavigationPlaceholder.astro";
+import HeroSection from "@/components/HeroSection.astro";
 ---
 
 <!doctype html>
@@ -36,16 +36,31 @@ import NavigationPlaceholder from "@/components/NavigationPlaceholder.astro";
 		:class="{ 'no-scroll': mobileMenuOpen }"
 	>
 		<Navigation />
-		<!-- Black background section with relative positioning -->
-		<div class="relative bg-black w-full sm:pb-40 overflow-hidden">
-			<ParallaxTextOverlay text="Some blog entry headline thats quite long" />
-			<NavigationPlaceholder />
-			<Header
-				title="Some blog entry headline that's quite long"
-				date="March 15, 2024"
-				tags={["Design", "Web Development", "CSS", "JavaScript"]}
+		<HeroSection class="bg-black">
+			<ParallaxTextOverlay
+				text="Some blog entry headline thats quite long"
+				slot="background"
 			/>
-		</div>
+			<NavigationPlaceholder />
+			<h1 class="text-4xl lg:text-6xl font-bold font-display leading-tight">
+				Some blog entry headline that's quite long
+			</h1>
+			<div class="mt-6 text-sm text-gray-300">Published on March 15, 2024</div>
+			<div
+				class="mt-4 flex flex-nowrap overflow-x-auto sm:flex-wrap sm:justify-center gap-2"
+			>
+				{
+					["Design", "Web Development", "CSS", "JavaScript"].map((tag) => (
+						<a
+							href={`/tags/${tag.toLowerCase()}`}
+							class="px-4 py-2 rounded-full text-xs text-gray-300 transition-colors duration-200 hover:bg-white bg-[hsl(0,0%,7%)] hover:text-black tag-pill select-none cursor-pointer flex-shrink-0"
+						>
+							{tag}
+						</a>
+					))
+				}
+			</div>
+		</HeroSection>
 
 		<MobileMenu />
 

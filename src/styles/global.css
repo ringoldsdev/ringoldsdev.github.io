@@ -125,3 +125,5 @@
 		--breakpoint-md: 48rem;
 	}
 }
+
+@custom-variant dark (&:where(.dark, .dark *));

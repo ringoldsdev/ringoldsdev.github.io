@@ -11,7 +11,11 @@ import Tags from "@/components/Tags.astro";
 ---
 
 <!doctype html>
-<html lang="en">
+<html
+	x-data="{ isDarkMode: window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches }"
+	lang="en"
+	:class="{ 'dark': isDarkMode }"
+>
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,7 +25,6 @@ import Tags from "@/components/Tags.astro";
 			body {
 				margin: 0;
 				padding: 0;
-				background-color: white;
 			}
 			.no-scroll {
 				overflow: hidden;
@@ -34,7 +37,7 @@ import Tags from "@/components/Tags.astro";
 	<body
 		x-data="{ scrollPosition: 0, mobileMenuOpen: false }"
 		@scroll.window="scrollPosition = window.scrollY"
-		class="bg-white"
+		class="bg-white dark:bg-[rgb(15,15,15)]"
 		:class="{ 'no-scroll': mobileMenuOpen }"
 	>
 		<Navigation />
@@ -61,7 +64,7 @@ import Tags from "@/components/Tags.astro";
 
 		<!-- Content Box with responsive padding -->
 		<div
-			class="lg:max-w-screen-md mx-auto bg-white text-black -mt-5 sm:-mt-40 relative z-10"
+			class="lg:max-w-screen-md mx-auto bg-white dark:bg-[rgb(15,15,15)] text-black dark:text-[rgb(230,230,230)] -mt-5 sm:-mt-40 relative z-10"
 		>
 			<div class="max-w-screen-md p-8 sm:p-20 mx-auto">
 				<p class="mb-6">

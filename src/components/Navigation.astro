@@ -9,27 +9,36 @@ import { Icon } from "astro-icon/components";
 >
 	<nav class="flex justify-between items-center w-full max-w-screen-md">
 		<div class="text-2xl font-bold">LOGO</div>
-		<!-- Desktop Navigation -->
-		<div class="hidden sm:flex items-center space-x-8">
-			<a href="#" class="hover:text-gray-300">Blog</a>
-			<a href="#" class="hover:text-gray-300">Snippets</a>
-			<a href="#" class="hover:text-gray-300">Projects</a>
-			<!-- Icons with double spacing -->
-			<div class="flex items-center space-x-4 ml-8">
-				<a href="#" class="hover:text-gray-300">
-					<Icon name="linkedin" size="24" />
-				</a>
-				<a href="#" class="hover:text-gray-300">
-					<Icon name="github" size="24" />
-				</a>
+		<div class="flex justify-end">
+			<!-- Desktop Navigation -->
+			<div class="hidden sm:flex items-center space-x-8">
+				<a href="#" class="hover:text-gray-300">Blog</a>
+				<a href="#" class="hover:text-gray-300">Snippets</a>
+				<a href="#" class="hover:text-gray-300">Projects</a>
+				<!-- Icons with double spacing -->
+				<div class="flex hidd items-center space-x-4 ml-8">
+					<a href="#" class="hover:text-gray-300 transition-colors">
+						<Icon name="linkedin" size="24" />
+					</a>
+					<a href="#" class="hover:text-gray-300 transition-colors">
+						<Icon name="github" size="24" />
+					</a>
+				</div>
 			</div>
+			<button
+				@click="isDarkMode = !isDarkMode"
+				class="hover:text-gray-300 cursor-pointer transition-colors ml-12"
+			>
+				<Icon name="moon" size="24" :class="{ 'hidden': isDarkMode }" />
+				<Icon name="sun" size="24" :class="{ 'hidden': !isDarkMode }" />
+			</button>
+			<!-- Mobile Hamburger Button -->
+			<button
+				class="sm:hidden text-white focus:outline-none ml-8"
+				@click="mobileMenuOpen = true"
+			>
+				<Icon name="hamburger" size="24" />
+			</button>
 		</div>
-		<!-- Mobile Hamburger Button -->
-		<button
-			class="sm:hidden text-white focus:outline-none"
-			@click="mobileMenuOpen = true"
-		>
-			<Icon name="hamburger" size="24" />
-		</button>
 	</nav>
 </div>

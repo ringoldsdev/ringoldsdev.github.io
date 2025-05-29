@@ -11,6 +11,9 @@ importers:
       '@alpinejs/intersect':
         specifier: ^3.14.9
         version: 3.14.9
+      '@alpinejs/persist':
+        specifier: ^3.14.9
+        version: 3.14.9
       '@astrojs/alpinejs':
         specifier: ^0.4.8
         version: 0.4.8(@types/alpinejs@3.13.11)(alpinejs@3.14.9)
@@ -72,6 +75,9 @@ importers:
       '@types/alpinejs__intersect':
         specifier: ^3.13.4
         version: 3.13.4
+      '@types/alpinejs__persist':
+        specifier: ^3.13.4
+        version: 3.13.4
       prettier:
         specifier: ^3.5.3
         version: 3.5.3
@@ -86,6 +92,9 @@ packages:
 
   '@alpinejs/intersect@3.14.9':
     resolution: {integrity: sha512-6LLIqrESA5kxuTbDJshtItfHmZoiiDOpf8lOeRrNtYjSj/FkggDpnjD+ZFGF5btEOVSpWic2VmG2BejR/aMxDw==}
+
+  '@alpinejs/persist@3.14.9':
+    resolution: {integrity: sha512-Td9hWEUtFFguYCRjXhq06sDultW21wXUnVro7YWJm+vjGu/nV/v3hepOXyYVjkGvH/F+zjx5UkzWXXzr3UiQ/w==}
 
   '@antfu/install-pkg@1.1.0':
     resolution: {integrity: sha512-MGQsmw10ZyI+EJo45CdSER4zEb+p31LpDAFp2Z3gkSd1yqVZGi0Ebx++YTEMonJy4oChEMLsxZ64j8FH6sSqtQ==}
@@ -673,6 +682,9 @@ packages:
 
   '@types/alpinejs__intersect@3.13.4':
     resolution: {integrity: sha512-yoX6WO7AleeULOQvPz7rrx7FJmu6l033bM7QiGcWyvZjqF2KIut99ByUZO6OWUQuYmbRjxsKthGiUYNaAywHiA==}
+
+  '@types/alpinejs__persist@3.13.4':
+    resolution: {integrity: sha512-H+cW7294EV5fGmIGD3BCJme54//KyWxZcP4uI9pk6W7fECR5hEwdO7j7wogz0o4vapS/kXiXiAjuqC9F+W0Vpw==}
 
   '@types/debug@4.1.12':
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
@@ -2450,6 +2462,8 @@ snapshots:
 
   '@alpinejs/intersect@3.14.9': {}
 
+  '@alpinejs/persist@3.14.9': {}
+
   '@antfu/install-pkg@1.1.0':
     dependencies:
       package-manager-detector: 1.3.0
@@ -2978,6 +2992,10 @@ snapshots:
   '@types/alpinejs@3.13.11': {}
 
   '@types/alpinejs__intersect@3.13.4':
+    dependencies:
+      '@types/alpinejs': 3.13.11
+
+  '@types/alpinejs__persist@3.13.4':
     dependencies:
       '@types/alpinejs': 3.13.11
 

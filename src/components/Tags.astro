@@ -1,0 +1,15 @@
+---
+export interface Props {
+	tags: string[];
+	class?: string;
+	[key: string]: any; // Rest parameter for additional props
+}
+const { class: extraClass = "", ...rest } = Astro.props as Props;
+---
+
+<div
+	class={`flex flex-nowrap overflow-x-auto sm:flex-wrap sm:justify-center gap-2 ${extraClass}`}
+	{...rest}
+>
+	<slot />
+</div>

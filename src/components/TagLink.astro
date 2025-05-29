@@ -1,0 +1,19 @@
+---
+export interface Props {
+	href: string;
+	text: string;
+	class?: string;
+}
+const { href, text, class: extraClass = "", ...rest } = Astro.props as Props;
+---
+
+<a
+	href={href}
+	class:list={[
+		"px-4 py-2 rounded-full text-xs text-gray-300 transition-colors duration-200 hover:bg-white bg-[hsl(0,0%,7%)] hover:text-black tag-pill select-none cursor-pointer flex-shrink-0",
+		extraClass,
+	]}
+	{...rest}
+>
+	{text}
+</a>

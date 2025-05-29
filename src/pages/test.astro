@@ -6,6 +6,8 @@ import MobileMenu from "@/components/MobileMenu.astro"; // Import the new compon
 import ParallaxTextOverlay from "@/components/ParallaxTextOverlay.astro";
 import NavigationPlaceholder from "@/components/NavigationPlaceholder.astro";
 import HeroSection from "@/components/HeroSection.astro";
+import TagLink from "@/components/TagLink.astro";
+import Tags from "@/components/Tags.astro";
 ---
 
 <!doctype html>
@@ -36,39 +38,32 @@ import HeroSection from "@/components/HeroSection.astro";
 		:class="{ 'no-scroll': mobileMenuOpen }"
 	>
 		<Navigation />
+		<MobileMenu />
+
 		<HeroSection class="bg-black">
+			<NavigationPlaceholder />
 			<ParallaxTextOverlay
 				text="Some blog entry headline thats quite long"
 				slot="background"
 			/>
-			<NavigationPlaceholder />
 			<h1 class="text-4xl lg:text-6xl font-bold font-display leading-tight">
 				Some blog entry headline that's quite long
 			</h1>
 			<div class="mt-6 text-sm text-gray-300">Published on March 15, 2024</div>
-			<div
-				class="mt-4 flex flex-nowrap overflow-x-auto sm:flex-wrap sm:justify-center gap-2"
-			>
+			<Tags class="mt-4 -ml-4 sm:ml-0">
 				{
 					["Design", "Web Development", "CSS", "JavaScript"].map((tag) => (
-						<a
-							href={`/tags/${tag.toLowerCase()}`}
-							class="px-4 py-2 rounded-full text-xs text-gray-300 transition-colors duration-200 hover:bg-white bg-[hsl(0,0%,7%)] hover:text-black tag-pill select-none cursor-pointer flex-shrink-0"
-						>
-							{tag}
-						</a>
+						<TagLink href={`/tags/${tag.toLowerCase()}`} text={tag} />
 					))
 				}
-			</div>
+			</Tags>
 		</HeroSection>
-
-		<MobileMenu />
 
 		<!-- Content Box with responsive padding -->
 		<div
 			class="lg:max-w-screen-md mx-auto bg-white text-black -mt-5 sm:-mt-40 relative z-10"
 		>
-			<div class="max-w-screen-md p-6 sm:p-20 mx-auto">
+			<div class="max-w-screen-md p-10 sm:p-20 mx-auto">
 				<p class="mb-6">
 					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui
 					mauris. Vivamus hendrerit arcu sed erat molestie vehicula. Sed auctor

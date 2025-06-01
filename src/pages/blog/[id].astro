@@ -4,6 +4,10 @@ import BlogLayout from "@/layouts/BlogLayout.astro";
 import Tags from "@/components/Tags.astro";
 import TagLink from "@/components/TagLink.astro";
 
+import h2 from "@/components/h2.astro";
+import h3 from "@/components/h3.astro";
+import h4 from "@/components/h4.astro";
+
 export async function getStaticPaths() {
 	const posts = await getCollection("blog");
 	return posts.map((post) => ({
@@ -14,6 +18,12 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content, headings } = await render(post);
+
+const components = {
+	h2,
+	h3,
+	h4,
+};
 ---
 
 <BlogLayout
@@ -55,7 +65,7 @@ const { Content, headings } = await render(post);
 			<article
 				class="prose prose-base [&>section]:mb-12 prose-headings:font-display prose-headings:font-semibold dark:prose-blockquote:border-base-500 prose-blockquote:font-normal prose-blockquote:tracking-normal prose-img:border prose-img:border-base-200 dark:prose-img:border-base-700 dark:prose-code:text-white prose-a:text-accent-400 hover:prose-a:text-accent-500 dark:prose-hr:border-base-800 prose-hr:border-base-300 prose-pre:border-none prose-pre:rounded-none prose-strong:font-medium prose-a:duration-200 dark:prose-strong:text-gray-300 dark:prose-p:text-gray-300 dark:prose-ul:text-gray-300 dark:prose-headings:text-gray-200"
 			>
-				<Content />
+				<Content components={components} />
 			</article>
 		</div>
 	</div>

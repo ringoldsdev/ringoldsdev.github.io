@@ -7,7 +7,7 @@ export interface Props {
 const { text } = Astro.props;
 ---
 
-<div class="absolute inset-0 w-full h-full overflow-hidden">
+<div class="absolute inset-0 w-full h-full overflow-hidden -z-1">
 	<div
 		class="opacity-[5%] text-white text-[33vw] sm:text-[25vw] font-black font-display leading-[0.9] text-center uppercase absolute top-1/2 left-1/2 w-[150%] select-none"
 		x-bind:style="`transform: translate(-50%, -50%) rotate(45deg) translateY(${scrollPosition * 0.6}px)`"

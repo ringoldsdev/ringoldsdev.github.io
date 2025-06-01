@@ -1,0 +1,58 @@
+---
+// BlogLayout.astro: Unified layout for blog post pages
+import Navigation from "@/components/Navigation.astro";
+import Footer from "@/components/Footer.astro";
+import MobileMenu from "@/components/MobileMenu.astro";
+import NavigationPlaceholder from "@/components/NavigationPlaceholder.astro";
+import ParallaxTextOverlay from "@/components/ParallaxTextOverlay.astro";
+
+import "@/styles/global.css";
+
+export interface Props {
+	title: string;
+	backgroundText: string;
+}
+const { title, backgroundText } = Astro.props as Props;
+---
+
+<!doctype html>
+<html
+	x-data="{ isDarkMode: $persist(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) }"
+	lang="en"
+	:class="{ 'dark': isDarkMode }"
+>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title}</title>
+		<style>
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			.no-scroll {
+				overflow: hidden;
+			}
+			[x-cloak] {
+				display: none !important;
+			}
+		</style>
+		<slot name="head" />
+	</head>
+	<body
+		x-data="{ scrollPosition: 0, mobileMenuOpen: false }"
+		@scroll.window="scrollPosition = window.scrollY"
+		class="bg-white dark:bg-[rgb(15,15,15)]"
+		:class="{ 'no-scroll': mobileMenuOpen }"
+	>
+		<div class="relative bg-black w-full sm:pb-40 overflow-hidden z-0">
+			<Navigation />
+			<NavigationPlaceholder />
+			<ParallaxTextOverlay text={backgroundText} slot="background" />
+			<slot name="hero" />
+		</div>
+		<MobileMenu />
+		<slot />
+		<Footer />
+	</body>
+</html>

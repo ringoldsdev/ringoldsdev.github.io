@@ -20,8 +20,8 @@ const { Content, headings } = await render(post);
 	title={post.data.title as string}
 	backgroundText={post.data.title as string}
 >
-	<div slot="hero" class="pt-10 pb-8 text-center text-white">
-		<h1 class="text-4xl lg:text-6xl font-bold font-display leading-tight">
+	<div slot="hero" class="pt-10 pb-8 sm:text-center text-white">
+		<h1 class="text-4xl sm:text-6xl font-bold font-display leading-tight">
 			{post.data.title}
 		</h1>
 		{
@@ -33,7 +33,7 @@ const { Content, headings } = await render(post);
 		}
 		{
 			post.data?.tags && (
-				<Tags class="mt-4 -ml-4 sm:ml-0">
+				<Tags class="mt-4 -ml-3 sm:ml-0">
 					{post.data.tags.map((tag) => (
 						<TagLink href={`/tags/${tag.toLowerCase()}`} text={tag} />
 					))}

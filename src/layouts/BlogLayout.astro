@@ -49,7 +49,9 @@ const { title, backgroundText } = Astro.props as Props;
 			<Navigation />
 			<NavigationPlaceholder />
 			<ParallaxTextOverlay text={backgroundText} slot="background" />
-			<slot name="hero" />
+			<div class="sm:pt-10 pb-8 px-8 sm:px-20 text-white">
+				<slot name="hero" />
+			</div>
 		</div>
 		<MobileMenu />
 		<slot />

@@ -11,7 +11,7 @@ import { Icon } from "astro-icon/components";
 		<div class="text-2xl font-bold">LOGO</div>
 		<div class="flex justify-end">
 			<!-- Desktop Navigation -->
-			<div class="hidden sm:flex items-center space-x-8">
+			<div class="hidden md:flex items-center space-x-8">
 				<a href="#" class="hover:text-gray-300">Blog</a>
 				<a href="#" class="hover:text-gray-300">Snippets</a>
 				<a href="#" class="hover:text-gray-300">Projects</a>
@@ -34,7 +34,7 @@ import { Icon } from "astro-icon/components";
 			</button>
 			<!-- Mobile Hamburger Button -->
 			<button
-				class="sm:hidden text-white focus:outline-none ml-8"
+				class="md:hidden text-white focus:outline-none ml-8"
 				@click="mobileMenuOpen = true"
 			>
 				<Icon name="hamburger" size="24" />

@@ -19,6 +19,7 @@ const { title, backgroundText } = Astro.props as Props;
 <html
 	x-data="{ isDarkMode: $persist(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) }"
 	lang="en"
+	class="h-full"
 	:class="{ 'dark': isDarkMode }"
 >
 	<head>
@@ -42,19 +43,23 @@ const { title, backgroundText } = Astro.props as Props;
 	<body
 		x-data="{ scrollPosition: 0, mobileMenuOpen: false }"
 		@scroll.window="scrollPosition = window.scrollY"
-		class="bg-white dark:bg-[rgb(15,15,15)]"
+		class="bg-white dark:bg-[rgb(15,15,15)] h-full flex flex-col"
 		:class="{ 'no-scroll': mobileMenuOpen }"
 	>
-		<div class="relative bg-black w-full sm:pb-40 overflow-hidden z-0">
-			<Navigation />
-			<NavigationPlaceholder />
-			<ParallaxTextOverlay text={backgroundText} slot="background" />
-			<div class="sm:pt-10 pb-8 px-8 sm:px-20 text-white">
-				<slot name="hero" />
+		<div class="flex-1 flex flex-col">
+			<div class="relative bg-black w-full sm:pb-40 overflow-hidden z-0">
+				<Navigation />
+				<NavigationPlaceholder />
+				<ParallaxTextOverlay text={backgroundText} slot="background" />
+				<div class="sm:pt-10 pb-8 px-8 sm:px-20 text-white">
+					<slot name="hero" />
+				</div>
 			</div>
+			<MobileMenu />
+			<div class="flex-1">
+				<slot />
+			</div>
+			<Footer />
 		</div>
-		<MobileMenu />
-		<slot />
-		<Footer />
 	</body>
 </html>

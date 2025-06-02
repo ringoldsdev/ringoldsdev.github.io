@@ -6,10 +6,11 @@ import { getCollection } from "astro:content";
 
 // Personal bio and skills
 const bio = [
-	"I'm <b class='font-semibold text-white'>Ringolds Leščinskis</b>,",
-	"A <b class='font-semibold text-white'>data engineer</b> who started as a full-stack engineer, and dabble in BI.",
-	"I specialise in building <b class='font-semibold text-white'>serverless [big]data pipelines</b> and performant backends.",
-	"I don't shy away from using AI but I also stick to <b class='font-semibold text-white'>fundamentals</b> to create systems that scale.",
+	"I'm <b class='font-semibold text-white'>Ringolds&nbsp;Leščinskis</b>,",
+	"A <b class='font-semibold text-white'>data engineer</b> who used to be a&nbsp;paralegal.",
+	"I specialise in building <b class='font-semibold text-white'>serverless [big] data pipelines</b> and performant backends. And I dabble in&nbsp;BI.",
+	"I don't shy away from using AI but I also stick to <b class='font-semibold text-white'>fundamentals</b> to create systems that&nbsp;scale.",
+	"...and I can make a mean milk washed cocktail.",
 ];
 
 const skills = [
@@ -50,7 +51,7 @@ const posts = (await getCollection("blog")).sort((a, b) => {
 	backgroundText={Array(2).fill(skills.join(" "))}
 >
 	<div slot="hero" class="pb-8 md:text-center text-white">
-		<div class="max-w-screen-md mx-auto md:px-20">
+		<div class="max-w-screen-md mx-auto mt-10 sm:mt-0 md:px-20">
 			{
 				bio.map((line) => (
 					<p

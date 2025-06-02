@@ -2,20 +2,17 @@
 // Navigation.astro: Navigation bar component
 
 import { Icon } from "astro-icon/components";
+import Logo from "./Logo.astro";
 ---
 
 <div
 	class="absolute top-0 left-0 right-0 flex justify-center text-white px-8 sm:px-20 h-22 sm:h-28 z-20"
 >
 	<nav class="flex justify-between items-center w-full max-w-screen-md">
-		<a href="/">
-			<span class="text-2xl font-bold hover:text-gray-300 transition-colors"
-				>Ringolds.dev</span
-			>
-		</a>
+		<Logo />
 		<div class="flex justify-end">
 			<!-- Desktop Navigation -->
-			<div class="flex items-center space-x-8">
+			<div class="hidden md:flex items-center space-x-8">
 				<!-- Icons with double spacing -->
 				<div class="flex hidd items-center space-x-4 ml-8">
 					<a href="#" class="hover:text-gray-300 transition-colors">
@@ -34,12 +31,12 @@ import { Icon } from "astro-icon/components";
 				<Icon name="sun" size="24" :class="{ 'hidden': !isDarkMode }" />
 			</button>
 			<!-- Mobile Hamburger Button -->
-			<!-- <button
+			<button
 				class="md:hidden text-white focus:outline-none ml-8"
 				@click="mobileMenuOpen = true"
 			>
 				<Icon name="hamburger" size="24" />
-			</button> -->
+			</button>
 		</div>
 	</nav>
 </div>

@@ -106,7 +106,7 @@ const posts = (await getCollection("blog")).sort((a, b) => {
 											<TagLinkSmall
 												href={`/tags/${tag.toLowerCase()}`}
 												text={tag}
-												class="bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-black"
+												class="bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-black dark:bg-[rgb(35,35,35)] dark:text-gray-300 dark:hover:bg-[rgb(50,50,50)] dark:hover:text-gray-300 rounded-full px-3 py-1 text-xs font-medium mr-2 mb-2 transition-colors duration-200"
 											/>
 										))}
 								</Tags>

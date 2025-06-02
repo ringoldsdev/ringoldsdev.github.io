@@ -6,21 +6,23 @@ import { getCollection } from "astro:content";
 
 // Personal bio and skills
 const bio = [
-	"I'm Ringolds,",
-	"A data engineer who started as a full-stack engineer.",
-	"I specialise in building serverless [big]data pipelines and performant backends.",
-	"I don't shy away from using AI but I also stick to fundamentals to create systems that scale.",
+	"I'm <b class='font-semibold text-white'>Ringolds Leščinskis</b>,",
+	"A <b class='font-semibold text-white'>data engineer</b> who started as a full-stack engineer, and dabble in BI.",
+	"I specialise in building <b class='font-semibold text-white'>serverless [big]data pipelines</b> and performant backends.",
+	"I don't shy away from using AI but I also stick to <b class='font-semibold text-white'>fundamentals</b> to create systems that scale.",
 ];
 
 const skills = [
 	"Python",
 	"Node.js",
+	"Typescript",
+	"Serverless",
+	"PostgreSQL",
+	"BigQuery",
+	"Github Actions",
+	"Terraform",
 	"GCP",
 	"AWS",
-	"Serverless",
-	"BigQuery",
-	"Terraform",
-	"Github Actions",
 ];
 
 // Fetch and sort blog posts by date (descending)
@@ -43,10 +45,20 @@ const posts = (await getCollection("blog")).sort((a, b) => {
 });
 ---
 
-<BlogLayout title="Ringolds – Web Developer" backgroundText="Ringolds.dev">
+<BlogLayout
+	title="Ringolds Leščinskis"
+	backgroundText={Array(2).fill(skills.join(" "))}
+>
 	<div slot="hero" class="pb-8 md:text-center text-white">
-		<div class="lg:max-w-screen-md mx-auto lg:px-20">
-			{bio.map((line) => <p class="text-xl md:text-2xl mb-4">{line}</p>)}
+		<div class="max-w-screen-md mx-auto md:px-20">
+			{
+				bio.map((line) => (
+					<p
+						class="text-xl text-gray-200 font-light md:text-2xl mb-4"
+						set:html={line}
+					/>
+				))
+			}
 
 			<Tags class="-ml-4 sm:ml-0 mt-8">
 				{
@@ -72,7 +84,7 @@ const posts = (await getCollection("blog")).sort((a, b) => {
 					posts.map((post) => (
 						<li>
 							<a href={`/blog/${post.id}`} class="block group">
-								<h4 class="text-2xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-accent-400 transition-colors duration-200 font-display mb-1">
+								<h4 class="text-2xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-accent-400 font-display mb-1">
 									{post.data.title}
 								</h4>
 								<p class="text-gray-500 dark:text-gray-300 text-sm mb-1">

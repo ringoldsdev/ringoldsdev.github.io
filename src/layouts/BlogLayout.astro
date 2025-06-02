@@ -43,7 +43,7 @@ const { title, backgroundText } = Astro.props as Props;
 	<body
 		x-data="{ scrollPosition: 0, mobileMenuOpen: false }"
 		@scroll.window="scrollPosition = window.scrollY"
-		class="bg-white dark:bg-[rgb(15,15,15)] h-full flex flex-col"
+		class="bg-[rgb(15,15,15)] h-full flex flex-col"
 		:class="{ 'no-scroll': mobileMenuOpen }"
 	>
 		<div class="flex-1 flex flex-col">

@@ -8,9 +8,8 @@ import TagLinkSmall from "@/components/TagLinkSmall.astro";
 // Personal bio and skills
 const bio = [
 	"I'm <b class='font-semibold text-white'>Ringolds&nbsp;Leščinskis</b>,",
-	"A <b class='font-semibold text-white'>data engineer</b> who used to be a&nbsp;paralegal.",
-	"I specialise in building <b class='font-semibold text-white'>serverless [big] data pipelines</b> and performant backends.",
-	"I don't shy away from using <b class='font-semibold text-white'>AI</b> but I also stick to <b class='font-semibold text-white'>fundamentals</b> to create systems that&nbsp;scale.",
+	"A self-taught <b class='font-semibold text-white'>data engineer</b> specialising in <b class='font-semibold text-white'>serverless [big] data pipelines</b> and performant backends.",
+	"I don't shy away from using <b class='font-semibold text-white'>LLMs</b> but I also stick to <b class='font-semibold text-white'>fundamentals</b> to create systems that&nbsp;scale.",
 	"...and I make mean milk washed cocktails.",
 ];
 
@@ -75,12 +74,10 @@ const posts = (await getCollection("blog")).sort((a, b) => {
 		</div>
 	</div>
 	<div
-		class="lg:max-w-screen-md mx-auto bg-white dark:bg-[rgb(15,15,15)] text-black dark:text-[rgb(230,230,230)] -mt-5 sm:-mt-40 relative z-10"
+		class="lg:max-w-screen-md mx-auto bg-white dark:bg-[rgb(24,24,24)] text-black dark:text-[rgb(230,230,230)] -mt-5 sm:-mt-40 relative z-10"
 	>
 		<div class="max-w-screen-md p-8 sm:p-20 mx-auto">
-			<h3 class="text-xl font-semibold mb-6 text-gray-800 dark:text-gray-100">
-				Latest Blog Posts
-			</h3>
+			<h3 class="text-md font-regular mb-6 text-gray-500">Latest Blog Posts</h3>
 			<ul class="space-y-8">
 				{
 					posts.map((post) => (

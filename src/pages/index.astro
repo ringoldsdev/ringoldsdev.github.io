@@ -3,14 +3,15 @@ import BlogLayout from "@/layouts/BlogLayout.astro";
 import Tags from "@/components/Tags.astro";
 import TagLink from "@/components/TagLink.astro";
 import { getCollection } from "astro:content";
+import TagLinkSmall from "@/components/TagLinkSmall.astro";
 
 // Personal bio and skills
 const bio = [
 	"I'm <b class='font-semibold text-white'>Ringolds&nbsp;Leščinskis</b>,",
 	"A <b class='font-semibold text-white'>data engineer</b> who used to be a&nbsp;paralegal.",
-	"I specialise in building <b class='font-semibold text-white'>serverless [big] data pipelines</b> and performant backends. And I dabble in&nbsp;BI.",
-	"I don't shy away from using AI but I also stick to <b class='font-semibold text-white'>fundamentals</b> to create systems that&nbsp;scale.",
-	"...and I can make a mean milk washed cocktail.",
+	"I specialise in building <b class='font-semibold text-white'>serverless [big] data pipelines</b> and performant backends.",
+	"I don't shy away from using <b class='font-semibold text-white'>AI</b> but I also stick to <b class='font-semibold text-white'>fundamentals</b> to create systems that&nbsp;scale.",
+	"...and I make mean milk washed cocktails.",
 ];
 
 const skills = [
@@ -99,10 +100,10 @@ const posts = (await getCollection("blog")).sort((a, b) => {
 								<p class="text-gray-700 dark:text-gray-300 text-base mb-2">
 									{post.data.description}
 								</p>
-								<Tags class="mt-2 justify-start">
+								<Tags class="mt-2 sm:justify-start">
 									{Array.isArray(post.data.tags) &&
 										post.data.tags.map((tag) => (
-											<TagLink
+											<TagLinkSmall
 												href={`/tags/${tag.toLowerCase()}`}
 												text={tag}
 												class="bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-black"

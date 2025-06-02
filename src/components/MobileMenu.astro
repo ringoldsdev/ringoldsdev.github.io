@@ -7,7 +7,12 @@ import Logo from "./Logo.astro";
 // x-data context in its parent scope, typically on the <body> tag.
 ---
 
-<div x-cloak x-show="mobileMenuOpen" class="fixed inset-0 bg-black z-50">
+<div
+	x-cloak
+	hidden
+	:hidden="!mobileMenuOpen"
+	class="fixed inset-0 bg-black z-50"
+>
 	<div class="px-8 sm:px-20 max-w-[740px] mx-auto">
 		<!-- Mobile Menu Header with Close Button -->
 		<div class="flex justify-between items-center h-22 sm:h-28 text-white">

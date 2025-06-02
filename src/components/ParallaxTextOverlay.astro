@@ -9,9 +9,9 @@ const { text } = Astro.props;
 
 <div class="absolute inset-0 w-full h-full overflow-hidden -z-1">
 	<div
-		class="opacity-[4%] text-white text-[20vw] sm:text-[15vw] font-black font-display leading-[0.9] text-center uppercase absolute top-1/2 left-1/2 w-[200%] select-none"
+		class="opacity-[5%] text-white text-[20vw] sm:text-[15vw] font-black font-display leading-[0.9] text-center uppercase absolute top-1/2 left-1/2 w-[200%] select-none"
 		style="transform: translate(-50%, -50%) rotate(45deg)"
 	>
-		{text}
+		{Array(5).fill(text)}
 	</div>
 </div>

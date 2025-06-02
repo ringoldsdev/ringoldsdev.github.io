@@ -1,7 +1,7 @@
 ---
 import BlogLayout from "@/layouts/BlogLayout.astro";
 import Tags from "@/components/Tags.astro";
-import TagLink from "@/components/TagLink.astro";
+import Tag from "@/components/Tag.astro";
 import { getCollection } from "astro:content";
 import TagLinkSmall from "@/components/TagLinkSmall.astro";
 
@@ -46,10 +46,7 @@ const posts = (await getCollection("blog")).sort((a, b) => {
 });
 ---
 
-<BlogLayout
-	title="Ringolds Leščinskis"
-	backgroundText={Array(2).fill(skills.join(" "))}
->
+<BlogLayout title="Ringolds Leščinskis" backgroundText={skills}>
 	<div slot="hero" class="pb-8 md:text-center text-white">
 		<div class="max-w-screen-md mx-auto mt-10 sm:mt-0 md:px-20">
 			{
@@ -64,7 +61,7 @@ const posts = (await getCollection("blog")).sort((a, b) => {
 			<Tags class="-ml-4 sm:ml-0 mt-8">
 				{
 					skills.map((skill) => (
-						<TagLink
+						<Tag
 							href={`/tags/${skill.toLowerCase().replace(/\s+/g, "-")}`}
 							text={skill}
 						/>

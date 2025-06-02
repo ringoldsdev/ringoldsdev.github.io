@@ -2,7 +2,9 @@
 export const prerender = true;
 
 import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogLayout from "@/layouts/BlogLayout.astro";
+import Tags from "@/components/Tags.astro";
+import TagLink from "@/components/TagLink.astro";
 
 const { slug } = Astro.params;
 
@@ -28,15 +30,57 @@ if (allBlogPostsWithTag.length === 0) {
 }
 ---
 
-<BaseLayout title={slug}>
-	<h1>Posts tagged with "{slug}"</h1>
-	<ul>
-		{
-			allBlogPostsWithTag.map((post) => (
-				<li>
-					<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-				</li>
-			))
-		}
-	</ul>
-</BaseLayout>
+<BlogLayout title={`Posts tagged with "${slug}"`} backgroundText={slug}>
+	<div slot="hero" class="pb-8 md:text-center text-white">
+		<div class="lg:max-w-screen-md mx-auto px-6 sm:px-20">
+			<h2
+				class="text-2xl sm:text-3xl font-bold font-display leading-tight mb-4"
+			>
+				Posts tagged with <span class="text-accent-400">{slug}</span>
+			</h2>
+		</div>
+	</div>
+	<div
+		class="lg:max-w-screen-md mx-auto bg-white dark:bg-[rgb(15,15,15)] text-black dark:text-[rgb(230,230,230)] -mt-5 sm:-mt-40 relative z-10"
+	>
+		<div class="max-w-screen-md p-8 sm:p-20 mx-auto">
+			<h3 class="text-xl font-semibold mb-6 text-gray-800 dark:text-gray-100">
+				Blog Posts
+			</h3>
+			<ul class="space-y-8">
+				{
+					allBlogPostsWithTag.map((post) => (
+						<li>
+							<a href={`/blog/${post.id}`} class="block group">
+								<h4 class="text-2xl font-bold text-gray-900 dark:text-gray-100 group-hover:text-accent-400 transition-colors duration-200 font-display mb-1">
+									{post.data.title}
+								</h4>
+								<p class="text-gray-500 dark:text-gray-300 text-sm mb-1">
+									{post.data.pubDate &&
+										new Date(post.data.pubDate).toLocaleDateString("en-US", {
+											year: "numeric",
+											month: "long",
+											day: "numeric",
+										})}
+								</p>
+								<p class="text-gray-700 dark:text-gray-300 text-base mb-2">
+									{post.data.description}
+								</p>
+								<Tags class="mt-2 justify-start">
+									{Array.isArray(post.data.tags) &&
+										post.data.tags.map((tag) => (
+											<TagLink
+												href={`/tags/${tag.toLowerCase()}`}
+												text={tag}
+												class="bg-gray-100 text-gray-500 hover:bg-gray-200 hover:text-black"
+											/>
+										))}
+								</Tags>
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+	</div>
+</BlogLayout>

@@ -1,19 +1,5 @@
----
-import { getCollection } from "astro:content";
-import BaseLayout from "../../layouts/BaseLayout.astro";
-
-const blogPosts = await getCollection("blog");
----
-
-<BaseLayout title="Blog Index">
-	<h1>Blog Posts</h1>
-	<ul>
-		{
-			blogPosts.map((post) => (
-				<li>
-					<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-				</li>
-			))
-		}
-	</ul>
-</BaseLayout>
+<html>
+	<head>
+		<meta http-equiv="refresh" content="0; url=/" />
+	</head>
+</html>

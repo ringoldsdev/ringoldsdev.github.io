@@ -2,30 +2,19 @@
 import BlogLayout from "@/layouts/BlogLayout.astro";
 import Tags from "@/components/Tags.astro";
 import Tag from "@/components/Tag.astro";
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import TagLinkSmall from "@/components/TagLinkSmall.astro";
+import { render } from "astro:content";
 
-// Personal bio and skills
-const bio = [
-	"I'm <b class='font-semibold text-white'>Ringolds&nbsp;Leščinskis</b>,",
+// Fetch about me content
+const about = await getEntry("me", "about");
+const skills = about?.data?.skills ?? [];
 
-	"a <b class='font-semibold text-white'>data engineer</b> architecting  <b class='font-semibold text-white'>serverless data&nbsp;pipelines</b>.",
-	"I leverage full-stack experience to build <b class='font-semibold text-white'>scalable backend systems</b> on solid fundamentals (LLM-ready) and develop integrations by <b class='font-semibold text-white'>reverse engineering</b> undocumented&nbsp;APIs.",
-	"...and I make mean milk washed cocktails.",
-];
+if (!about) {
+	throw new Error("About me content not found");
+}
 
-const skills = [
-	"Python",
-	"Node.js",
-	"Typescript",
-	"Serverless",
-	"PostgreSQL",
-	"BigQuery",
-	"Github Actions",
-	"Terraform",
-	"GCP",
-	"AWS",
-];
+const { Content: AboutMeContent } = await render(about);
 
 // Fetch and sort blog posts by date (descending)
 const posts = (await getCollection("blog")).sort((a, b) => {
@@ -50,14 +39,11 @@ const posts = (await getCollection("blog")).sort((a, b) => {
 <BlogLayout title="Ringolds Leščinskis" backgroundText={skills}>
 	<div slot="hero" class="pb-8 md:text-center text-white">
 		<div class="max-w-screen-md mx-auto mt-10 sm:mt-0 md:px-20">
-			{
-				bio.map((line) => (
-					<p
-						class="text-xl text-gray-200 font-light md:text-2xl mb-4"
-						set:html={line}
-					/>
-				))
-			}
+			<div
+				class="prose prose-invert prose-p:text-xl prose-p:md:text-2xl prose-p:mb-4 prose-p:font-light prose-p:text-gray-200 [&_b]:font-semibold [&_b]:text-white"
+			>
+				<AboutMeContent />
+			</div>
 
 			<Tags class="-ml-4 sm:ml-0 mt-8">
 				{

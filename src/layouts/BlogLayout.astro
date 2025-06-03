@@ -10,7 +10,7 @@ import "@/styles/global.css";
 
 export interface Props {
 	title: string;
-	backgroundText: string;
+	backgroundText: string | string[];
 }
 const { title, backgroundText } = Astro.props as Props;
 ---

@@ -8,8 +8,9 @@ import TagLink from "@/components/TagLink.astro";
 
 const { slug } = Astro.params;
 
+const blogs = await getCollection("blog");
+
 export async function getStaticPaths() {
-	const blogs = await getCollection("blog");
 	return [...new Set(blogs.map((blog) => blog.data.tags).flat())].map(
 		(tag) => ({
 			params: { slug: tag },
@@ -17,17 +18,9 @@ export async function getStaticPaths() {
 	);
 }
 
-if (!slug) {
-	return Astro.redirect("/404");
-}
-
 const allBlogPostsWithTag = await getCollection("blog", (post) =>
 	(post.data?.tags || []).includes(slug),
 );
-
-if (allBlogPostsWithTag.length === 0) {
-	return Astro.redirect("/404");
-}
 ---
 
 <BlogLayout title={`Posts tagged with "${slug}"`} backgroundText={slug}>

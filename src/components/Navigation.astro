@@ -24,7 +24,7 @@ import Logo from "./Logo.astro";
 				</div>
 			</div>
 			<button
-				@click="isDarkMode = !isDarkMode"
+				id="theme-btn"
 				class="hover:text-gray-300 cursor-pointer transition-colors ml-12"
 			>
 				<Icon x-cloak hidden :hidden="isDarkMode" name="moon" size="24" />

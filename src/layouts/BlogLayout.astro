@@ -17,10 +17,10 @@ const { title, backgroundText } = Astro.props as Props;
 
 <!doctype html>
 <html
-	x-data="{ isDarkMode: $persist(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) }"
+	x-data="{ isDarkMode: primaryColorScheme === 'dark' }"
 	lang="en"
 	class="h-full"
-	:class="{ 'dark': isDarkMode }"
+	:class="{ 'dark': primaryColorScheme === 'dark' }"
 >
 	<head>
 		<meta charset="UTF-8" />
@@ -39,6 +39,7 @@ const { title, backgroundText } = Astro.props as Props;
 			}
 		</style>
 		<slot name="head" />
+		<script is:inline src="/scripts/toggle-theme.js"></script>
 	</head>
 	<body
 		x-data="{ scrollPosition: 0, mobileMenuOpen: false }"

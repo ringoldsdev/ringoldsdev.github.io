@@ -8,9 +8,8 @@ import TagLink from "@/components/TagLink.astro";
 
 const { slug } = Astro.params;
 
-const blogs = await getCollection("blog");
-
 export async function getStaticPaths() {
+	const blogs = await getCollection("blog");
 	return [...new Set(blogs.map((blog) => blog.data.tags).flat())].map(
 		(tag) => ({
 			params: { slug: tag },

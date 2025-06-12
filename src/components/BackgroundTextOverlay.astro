@@ -1,0 +1,18 @@
+---
+// src/components/ParallaxTextOverlay.astro
+export interface Props {
+	text: string | string[];
+	class?: string;
+}
+
+const { text, class: extraClass = "", ...rest } = Astro.props;
+---
+
+<div class="fixed inset-0 w-full h-full overflow-hidden -z-1" {...rest}>
+	<div
+		class={`opacity-[1.5%] text-white text-[20vw] sm:text-[15vw] font-black font-display leading-[0.9] text-center uppercase absolute top-1/2 left-1/2 w-[200%] select-none ${extraClass}`}
+		style="transform: translate(-50%, -50%) rotate(45deg)"
+	>
+		{Array(5).fill(text)}
+	</div>
+</div>

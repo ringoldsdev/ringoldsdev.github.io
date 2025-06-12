@@ -4,9 +4,9 @@ import Navigation from "@/components/Navigation.astro";
 import Footer from "@/components/Footer.astro";
 import MobileMenu from "@/components/MobileMenu.astro";
 import NavigationPlaceholder from "@/components/NavigationPlaceholder.astro";
-import ParallaxTextOverlay from "@/components/ParallaxTextOverlay.astro";
 
 import "@/styles/global.css";
+import BackgroundTextOverlay from "@/components/BackgroundTextOverlay.astro";
 
 export interface Props {
 	title: string;
@@ -42,17 +42,20 @@ const { title, backgroundText } = Astro.props as Props;
 		:class="{ 'no-scroll': mobileMenuOpen }"
 	>
 		<script is:inline src="/scripts/toggle-theme.js"></script>
+
+		<BackgroundTextOverlay text={backgroundText} slot="background" />
 		<div class="flex-1 flex flex-col">
-			<div class="relative bg-black w-full sm:pb-40 overflow-hidden z-0">
+			<div class="relative w-full overflow-hidden z-0">
 				<Navigation />
 				<NavigationPlaceholder />
-				<ParallaxTextOverlay text={backgroundText} slot="background" />
+				<MobileMenu />
 				<div class="sm:pt-10 pb-8 px-8 sm:px-20 text-white">
 					<slot name="hero" />
 				</div>
 			</div>
-			<MobileMenu />
-			<div class="flex-1">
+			<div
+				class="w-full lg:max-w-screen-md mx-auto bg-white dark:bg-[rgb(24,24,24)] text-black dark:text-[rgb(230,230,230)] p-8 sm:p-20"
+			>
 				<slot />
 			</div>
 			<Footer />

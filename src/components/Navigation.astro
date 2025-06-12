@@ -27,8 +27,8 @@ import Logo from "./Logo.astro";
 				id="theme-btn"
 				class="hover:text-gray-300 cursor-pointer transition-colors ml-12"
 			>
-				<Icon x-cloak hidden :hidden="isDarkMode" name="moon" size="24" />
-				<Icon hidden :hidden="!isDarkMode" name="sun" size="24" />
+				<Icon x-cloak class="block dark:hidden" name="moon" size="24" />
+				<Icon class="hidden dark:block" name="sun" size="24" />
 			</button>
 			<!-- Mobile Hamburger Button -->
 			<button

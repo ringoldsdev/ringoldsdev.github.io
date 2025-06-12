@@ -16,12 +16,7 @@ const { title, backgroundText } = Astro.props as Props;
 ---
 
 <!doctype html>
-<html
-	x-data="{ isDarkMode: primaryColorScheme === 'dark' }"
-	lang="en"
-	class="h-full"
-	:class="{ 'dark': primaryColorScheme === 'dark' }"
->
+<html lang="en" class="h-full">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -39,7 +34,6 @@ const { title, backgroundText } = Astro.props as Props;
 			}
 		</style>
 		<slot name="head" />
-		<script is:inline src="/scripts/toggle-theme.js"></script>
 	</head>
 	<body
 		x-data="{ scrollPosition: 0, mobileMenuOpen: false }"
@@ -47,6 +41,7 @@ const { title, backgroundText } = Astro.props as Props;
 		class="bg-[rgb(15,15,15)] h-full flex flex-col"
 		:class="{ 'no-scroll': mobileMenuOpen }"
 	>
+		<script is:inline src="/scripts/toggle-theme.js"></script>
 		<div class="flex-1 flex flex-col">
 			<div class="relative bg-black w-full sm:pb-40 overflow-hidden z-0">
 				<Navigation />

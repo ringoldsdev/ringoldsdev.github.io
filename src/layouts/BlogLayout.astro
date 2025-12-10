@@ -1,11 +1,10 @@
 ---
 // BlogLayout.astro: Unified layout for blog post pages
+import "@/styles/global.css";
 import Navigation from "@/components/Navigation.astro";
 import Footer from "@/components/Footer.astro";
 import MobileMenu from "@/components/MobileMenu.astro";
 import NavigationPlaceholder from "@/components/NavigationPlaceholder.astro";
-
-import "@/styles/global.css";
 import BackgroundTextOverlay from "@/components/BackgroundTextOverlay.astro";
 
 export interface Props {
@@ -43,7 +42,11 @@ const { title, backgroundText } = Astro.props as Props;
 	>
 		<script is:inline src="/scripts/toggle-theme.js"></script>
 
-		<BackgroundTextOverlay text={backgroundText} slot="background" />
+		<BackgroundTextOverlay
+			text={backgroundText}
+			slot="background"
+			:style="opacity: 0.1"
+		/>
 		<div class="flex-1 flex flex-col">
 			<div class="relative w-full overflow-hidden z-0">
 				<Navigation />
@@ -54,9 +57,11 @@ const { title, backgroundText } = Astro.props as Props;
 				</div>
 			</div>
 			<div
-				class="w-full lg:max-w-screen-md mx-auto bg-white dark:bg-[rgb(24,24,24)] text-black dark:text-[rgb(230,230,230)] p-8 sm:p-20"
+				class="w-full bg-white dark:bg-[rgb(24,24,24)] text-black dark:text-[rgb(230,230,230)]"
 			>
-				<slot />
+				<div class="max-w-screen-md mx-auto p-8 sm:p-20">
+					<slot />
+				</div>
 			</div>
 			<Footer />
 		</div>
